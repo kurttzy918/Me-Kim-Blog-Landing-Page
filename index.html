@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vartensie · Kim & Kurt memories</title>
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <!-- modern font (Vartensie / Poppins) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Vartensie', 'Poppins', sans-serif;
+      background-color: #fcfaff;
+      color: #1f1d2b;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* navigation */
+    nav {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: 'Vartensie', cursive;
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      position: relative;
+      cursor: pointer;
+      animation: logoFadeIn 1.2s ease forwards;
+    }
+    .logo img {
+      width: 55px;
+      height: 55px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 8px 25px rgba(124, 77, 255, 0.5);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .logo span {
+      background: linear-gradient(135deg, #7c4dff, #c37df2, #7c4dff);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradientMove 4s linear infinite;
+    }
+
+    .logo:hover img {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 12px 35px rgba(124, 77, 255, 0.7);
+    }
+
+    .logo:hover span {
+      letter-spacing: 4px;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    @keyframes logoFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #2d2a3b;
+      transition: color 0.2s;
+      font-size: 1.05rem;
+    }
+
+    .nav-links a:hover {
+      color: #7c4dff;
+    }
+
+    /* ----- HERO CAROUSEL (with blur transition) ----- */
+    .hero {
+      height: 90vh;
+      min-height: 600px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-swiper .swiper-slide {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-swiper .slide-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    }
+
+    .hero-swiper .slide-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      color: white;
+      max-width: 900px;
+      padding: 2rem;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.4);
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(4px);
+      border-radius: 40px;
+      margin: 0 24px;
+    }
+
+    .hero-swiper .slide-content h1 {
+      font-size: 4.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .hero-swiper .slide-content p {
+      font-size: 1.5rem;
+      font-weight: 300;
+    }
+
+    /* blur transition effect */
+    .hero-swiper.blur-transition .swiper-wrapper {
+      filter: blur(10px);
+      transition: filter 0.4s ease;
+    }
+
+    .hero .swiper-button-next,
+    .hero .swiper-button-prev {
+      color: white;
+      background: rgba(255,255,255,0.2);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .hero .swiper-button-next:after,
+    .hero .swiper-button-prev:after {
+      font-size: 1.5rem;
+    }
+    .hero .swiper-pagination-bullet {
+      background: white;
+      opacity: 0.7;
+    }
+    .hero .swiper-pagination-bullet-active {
+      background: #fff;
+      opacity: 1;
+    }
+
+    /* sections */
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 4rem;
+      color: #1f1d2b;
+    }
+
+    .section-title span {
+      background: linear-gradient(145deg, #7c4dff, #c37df2);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #a78bfa, #e0c3ff);
+      margin: 20px auto 0;
+      border-radius: 4px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      box-shadow: 0 20px 35px -8px rgba(100, 70, 150, 0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-item .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(20, 10, 40, 0.8), transparent 60%);
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+      color: white;
+      font-weight: 500;
+      font-size: 1.4rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .overlay {
+      opacity: 1;
+    }
+
+    .memories-carousel {
+      background: #f5f0ff;
+      border-radius: 60px 60px 0 0;
+    }
+
+    .memories-swiper {
+      width: 100%;
+      padding: 20px 0 60px 0;
+    }
+
+    .memories-swiper .swiper-slide {
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 25px 45px -12px rgba(90, 60, 160, 0.25);
+      transition: transform 0.2s;
+      max-width: 380px;
+    }
+
+    .memories-swiper .swiper-slide img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .slide-caption {
+      padding: 28px 22px 32px;
+      background: white;
+    }
+
+    .slide-caption h3 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1f1d2b;
+    }
+
+    .slide-caption p {
+      color: #6f658d;
+      font-weight: 400;
+    }
+
+    .memories-swiper .swiper-button-next,
+    .memories-swiper .swiper-button-prev {
+      color: #7c4dff;
+      background: white;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      box-shadow: 0 10px 25px rgba(124, 77, 255, 0.25);
+      transition: 0.2s;
+    }
+
+    .memories-swiper .swiper-button-next:after,
+    .memories-swiper .swiper-button-prev:after {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .memories-swiper .swiper-pagination-bullet-active {
+      background: #7c4dff !important;
+    }
+
+    .parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .parallax::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 10, 30, 0.3);
+      backdrop-filter: blur(2px);
+      z-index: 1;
+    }
+
+    .parallax-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 2rem;
+      text-align: center;
+      color: white;
+    }
+
+    .parallax-content h2 {
+      font-size: 4.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .parallax-content p {
+      font-size: 1.6rem;
+      font-weight: 300;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    /* ----- VIDEO GALLERY (replaces blog preview) ----- */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .video-card {
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -12px rgba(70, 40, 120, 0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .video-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 35px 50px -15px #7b4dff4d;
+    }
+
+    .video-card video {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      background: #1e1a2b;
+      display: block;
+    }
+
+    .video-card-content {
+      padding: 24px 22px 28px;
+    }
+
+    .video-card h3 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #211d33;
+    }
+
+    .video-card p {
+      color: #5f5a72;
+      font-size: 1rem;
+    }
+
+    footer {
+      background: #1b1725;
+      color: #d6cef0;
+      padding: 48px 0;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    footer p:first-child {
+      font-weight: 500;
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+      color: #ffffffd9;
+    }
+
+    @media (max-width: 1024px) {
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+      .hero-swiper .slide-content h1 { font-size: 3.5rem; }
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-swiper .slide-content h1 { font-size: 2.8rem; }
+      .hero-swiper .slide-content p { font-size: 1.2rem; }
+      .parallax-content h2 { font-size: 3rem; }
+      .parallax-content p { font-size: 1.3rem; }
+      .nav-links { display: none; }
+      .logo { margin: 0 auto; }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <div class="logo">
+        <img src="Me & Kimtots/logo2.png" alt="Kim & Kurt Logo">
+        <span>KIM & KURT</span>
+      </div>
+      <div class="nav-links">
+        <a href="#">home</a>
+        <a href="#">gallery</a>
+        <a href="#">memories</a>
+        <a href="#">blog</a>
+        <a href="#">contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO CAROUSEL (dynamic) -->
+    <section class="hero">
+      <div class="swiper hero-swiper">
+        <div class="swiper-wrapper" id="hero-swiper-wrapper">
+          <!-- Slides generated from JS -->
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <!-- GALLERY: Encantadia -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title"><span>Gallery</span> · Dating @ Encantadia</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item"><img src="Me & Kimtots/encan1.jpg" alt="encantadia 1"><div class="overlay">magic moment</div></div>
+          <div class="gallery-item"><img src="Me & Kimtots/encan3.jpg" alt="encantadia 3"><div class="overlay">hidden fall</div></div>
+          <div class="gallery-item"><img src="Me & Kimtots/encan4.jpg" alt="encantadia 4"><div class="overlay">electric nights</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY: WinterWonderLand -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title"><span>Gallery</span> · Dating @ WinterWonderLand</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item"><img src="Me & Kimtots/out1.jpg" alt="winter 1"><div class="overlay">frosty kiss</div></div>
+          <div class="gallery-item"><img src="Me & Kimtots/out2.jpg" alt="winter 2"><div class="overlay">snowy hug</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMORIES CAROUSEL (infinite) -->
+    <section class="section memories-carousel">
+      <div class="container">
+        <h2 class="section-title"><span>Bonding With You</span> · Kim & Kurt</h2>
+        <div class="swiper memories-swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="Me & Kimtots/mirror1.jpg" alt="mirror1"><div class="slide-caption"><h3>Kim & Kurt</h3><p>Always Love you</p></div></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/mirror2.jpg" alt="mirror2"><div class="slide-caption"><h3>Kim & Kurt</h3><p>Always Love you</p></div></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/mirror3.jpg" alt="mirror3"><div class="slide-caption"><h3>Kim & Kurt</h3><p>Always Love you</p></div></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/1.jpg" alt="memory1"><div class="slide-caption"><h3>Kim & Kurt</h3><p>Always Love you</p></div></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/2.jpg" alt="memory2"><div class="slide-caption"><h3>Kim & Kurt</h3><p>Always Love you</p></div></div>
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARALLAX SECTION (fixed) -->
+    <section class="parallax" style="background-image: url('Me & Kimtots/logo2.png');">
+      <div class="parallax-content">
+        <!-- optional text -->
+        <h2 style="color:white;">our story</h2>
+        <p>endless rewind</p>
+      </div>
+    </section>
+
+    <!-- ===== VIDEO MEMORIES (replaces blog preview) ===== -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title"><span>Video</span> memories</h2>
+        <div class="video-grid" id="video-grid-container">
+          <!-- Videos will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Kim & Kurt · 01.11.2025</p>
+      <p>© 2026 — I Love you Forever</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    (function() {
+      // ========== 1. HERO IMAGES (customize here) ==========
+      const heroImages = [
+        { url: 'Me & Kimtots/1.jpg', title: 'Me & Kimtots', subtitle: 'I Love you so Much' },
+        { url: 'Me & Kimtots/3.jpg', title: 'moments like these', subtitle: 'I Love you Forever' },
+        { url: 'Me & Kimtots/encan4.jpg', title: 'Date with you', subtitle: 'I Love you so Much' },
+        { url: 'Me & Kimtots/kiss2.jpg', title: 'Forever Love', subtitle: 'My Love will never end' }
+      ];
+
+      const wrapper = document.getElementById('hero-swiper-wrapper');
+      if (wrapper) {
+        heroImages.forEach(img => {
+          const slide = document.createElement('div');
+          slide.className = 'swiper-slide';
+          slide.innerHTML = `
+            <div class="slide-bg" style="background-image: url('${img.url}');"></div>
+            <div class="slide-content">
+              <h1>${img.title}</h1>
+              <p>${img.subtitle}</p>
+            </div>
+          `;
+          wrapper.appendChild(slide);
+        });
+      }
+
+      // Hero swiper
+      const heroSwiperEl = document.querySelector('.hero-swiper');
+      if (heroSwiperEl) {
+        new Swiper(heroSwiperEl, {
+          loop: true,
+          speed: 700,
+          autoplay: { delay: 5000, disableOnInteraction: false },
+          navigation: { nextEl: '.hero .swiper-button-next', prevEl: '.hero .swiper-button-prev' },
+          pagination: { el: '.hero .swiper-pagination', clickable: true },
+          on: {
+            slideChangeTransitionStart: () => heroSwiperEl.classList.add('blur-transition'),
+            slideChangeTransitionEnd: () => heroSwiperEl.classList.remove('blur-transition')
+          }
+        });
+      }
+
+      // Memories swiper
+      new Swiper('.memories-swiper', {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 30,
+        centeredSlides: true,
+        pagination: { el: '.memories-swiper .swiper-pagination', clickable: true, dynamicBullets: true },
+        navigation: { nextEl: '.memories-swiper .swiper-button-next', prevEl: '.memories-swiper .swiper-button-prev' },
+        breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
+        autoplay: { delay: 4000, disableOnInteraction: false },
+        speed: 800,
+      });
+
+      // ========== 2. VIDEO MEMORIES — ADD YOUR OWN VIDEOS HERE ==========
+      const videoMemories = [
+        {
+          src: 'Me & Kimtots/video1.mp4',        // path to your video file
+          poster: 'Me & Kimtots/1.jpg',           // optional poster image
+          title: 'Date @ Encantadia',
+          description: 'captured this sweet moment'
+        },
+        {
+          src: 'Me & Kimtots/video2.mp4',
+          poster: 'Me & Kimtots/encan4.jpg',
+          title: 'Date @ Encantadia',
+          description: 'captured this sweet moment'
+        },
+        {
+          src: 'Me & Kimtots/video3.mp4',
+          poster: 'Me & Kimtots/kiss2.jpg',
+          title: 'Date @ Encantadia',
+          description: 'captured this sweet moment'
+        }
+        // Add more objects as needed
+      ];
+
+      const videoGrid = document.getElementById('video-grid-container');
+      if (videoGrid) {
+        videoMemories.forEach(v => {
+          const card = document.createElement('div');
+          card.className = 'video-card';
+          card.innerHTML = `
+            <video controls preload="metadata" poster="${v.poster || ''}">
+              <source src="${v.src}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-card-content">
+              <h3>${v.title}</h3>
+              <p>${v.description}</p>
+            </div>
+          `;
+          videoGrid.appendChild(card);
+        });
+      }
+    })();
+  </script>
+  <!-- INSTRUCTIONS:
+    🔧 TO ADD YOUR OWN VIDEOS:
+      1. Locate the `videoMemories` array in the JavaScript above.
+      2. Each entry needs:
+         - src: path to your .mp4 file (e.g., 'Me & Kimtots/myvideo.mp4')
+         - poster: (optional) path to a thumbnail image
+         - title: short title
+         - description: short text
+      3. Add as many objects as you like.
+      4. Make sure the video files are stored in the correct folder.
+  -->
+</body>
+</html>
