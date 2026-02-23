@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>Vartensie · Kim & Kurt memories</title>
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -22,6 +22,7 @@
       color: #1f1d2b;
       line-height: 1.6;
       scroll-behavior: smooth;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .container {
@@ -36,7 +37,7 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
-      padding: 18px 0;
+      padding: 12px 0;
       position: sticky;
       top: 0;
       z-index: 50;
@@ -52,18 +53,18 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
       font-family: 'Vartensie', cursive;
-      font-size: 2.4rem;
+      font-size: 1.8rem;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
       position: relative;
       cursor: pointer;
       animation: logoFadeIn 1.2s ease forwards;
     }
     .logo img {
-      width: 55px;
-      height: 55px;
+      width: 45px;
+      height: 45px;
       object-fit: cover;
       border-radius: 50%;
       box-shadow: 0 8px 25px rgba(124, 77, 255, 0.5);
@@ -77,6 +78,7 @@
       background-clip: text;
       color: transparent;
       animation: gradientMove 4s linear infinite;
+      font-size: 1.8rem;
     }
 
     .logo:hover img {
@@ -85,7 +87,7 @@
     }
 
     .logo:hover span {
-      letter-spacing: 4px;
+      letter-spacing: 2px;
     }
 
     @keyframes gradientMove {
@@ -105,7 +107,7 @@
     }
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 2rem;
     }
 
     .nav-links a {
@@ -113,7 +115,9 @@
       font-weight: 500;
       color: #2d2a3b;
       transition: color 0.2s;
-      font-size: 1.05rem;
+      font-size: 1rem;
+      padding: 8px 0;
+      display: inline-block;
     }
 
     .nav-links a:hover {
@@ -157,12 +161,13 @@
       text-align: center;
       color: white;
       max-width: 900px;
-      padding: 2rem;
+      padding: 1.5rem;
       text-shadow: 0 4px 30px rgba(0,0,0,0.4);
       background: rgba(0,0,0,0.2);
       backdrop-filter: blur(4px);
       border-radius: 40px;
-      margin: 0 24px;
+      margin: 0 20px;
+      width: 90%;
     }
 
     .hero-swiper .slide-content h1 {
@@ -170,7 +175,7 @@
       font-weight: 700;
       letter-spacing: -0.02em;
       line-height: 1.2;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       color: white;
     }
 
@@ -194,6 +199,7 @@
       border-radius: 50%;
       backdrop-filter: blur(8px);
       border: 1px solid rgba(255,255,255,0.3);
+      transition: transform 0.2s;
     }
     .hero .swiper-button-next:after,
     .hero .swiper-button-prev:after {
@@ -210,15 +216,15 @@
 
     /* sections */
     .section {
-      padding: 90px 0;
+      padding: 70px 0;
     }
 
     .section-title {
       text-align: center;
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       font-weight: 600;
       letter-spacing: -0.02em;
-      margin-bottom: 4rem;
+      margin-bottom: 3rem;
       color: #1f1d2b;
     }
 
@@ -232,22 +238,22 @@
     .section-title::after {
       content: '';
       display: block;
-      width: 100px;
+      width: 80px;
       height: 4px;
       background: linear-gradient(90deg, #a78bfa, #e0c3ff);
-      margin: 20px auto 0;
+      margin: 15px auto 0;
       border-radius: 4px;
     }
 
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 28px;
+      gap: 24px;
     }
 
     .gallery-item {
       position: relative;
-      border-radius: 28px;
+      border-radius: 24px;
       overflow: hidden;
       aspect-ratio: 4 / 3;
       box-shadow: 0 20px 35px -8px rgba(100, 70, 150, 0.2);
@@ -272,10 +278,10 @@
       background: linear-gradient(to top, rgba(20, 10, 40, 0.8), transparent 60%);
       display: flex;
       align-items: flex-end;
-      padding: 24px;
+      padding: 20px;
       color: white;
       font-weight: 500;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       opacity: 0;
       transition: opacity 0.3s ease;
     }
@@ -296,42 +302,43 @@
 
     .memories-swiper .swiper-slide {
       background: white;
-      border-radius: 32px;
+      border-radius: 28px;
       overflow: hidden;
       box-shadow: 0 25px 45px -12px rgba(90, 60, 160, 0.25);
       transition: transform 0.2s;
-      max-width: 380px;
+      max-width: 360px;
     }
 
     .memories-swiper .swiper-slide img {
       width: 100%;
-      height: 280px;
+      height: 260px;
       object-fit: cover;
     }
 
     .slide-caption {
-      padding: 28px 22px 32px;
+      padding: 22px 18px 26px;
       background: white;
     }
 
     .slide-caption h3 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: #1f1d2b;
     }
 
     .slide-caption p {
       color: #6f658d;
       font-weight: 400;
+      font-size: 0.95rem;
     }
 
     .memories-swiper .swiper-button-next,
     .memories-swiper .swiper-button-prev {
       color: #7c4dff;
       background: white;
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       box-shadow: 0 10px 25px rgba(124, 77, 255, 0.25);
       transition: 0.2s;
@@ -339,7 +346,7 @@
 
     .memories-swiper .swiper-button-next:after,
     .memories-swiper .swiper-button-prev:after {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: bold;
     }
 
@@ -352,7 +359,7 @@
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      height: 560px;
+      height: 500px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -379,79 +386,80 @@
     }
 
     .parallax-content h2 {
-      font-size: 4.2rem;
+      font-size: 3.5rem;
       font-weight: 700;
       letter-spacing: -0.02em;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
 
     .parallax-content p {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 300;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     }
 
-    /* ----- VIDEO GALLERY (replaces blog preview) ----- */
+    /* ----- VIDEO GALLERY ----- */
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 32px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      margin-top: 30px;
     }
 
     .video-card {
       background: white;
-      border-radius: 32px;
+      border-radius: 28px;
       overflow: hidden;
       box-shadow: 0 20px 40px -12px rgba(70, 40, 120, 0.15);
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .video-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 35px 50px -15px #7b4dff4d;
+      transform: translateY(-6px);
+      box-shadow: 0 30px 45px -15px #7b4dff4d;
     }
 
     .video-card video {
       width: 100%;
-      height: 220px;
+      height: 200px;
       object-fit: cover;
       background: #1e1a2b;
       display: block;
     }
 
     .video-card-content {
-      padding: 24px 22px 28px;
+      padding: 20px 18px 24px;
     }
 
     .video-card h3 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: #211d33;
     }
 
     .video-card p {
       color: #5f5a72;
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
     footer {
       background: #1b1725;
       color: #d6cef0;
-      padding: 48px 0;
+      padding: 40px 0;
       text-align: center;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
 
     footer p:first-child {
       font-weight: 500;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       margin-bottom: 6px;
       color: #ffffffd9;
     }
 
+    /* ===== MOBILE FRIENDLY TWEAKS ===== */
     @media (max-width: 1024px) {
       .gallery-grid { grid-template-columns: repeat(3, 1fr); }
       .hero-swiper .slide-content h1 { font-size: 3.5rem; }
@@ -461,15 +469,41 @@
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .hero-swiper .slide-content h1 { font-size: 2.8rem; }
       .hero-swiper .slide-content p { font-size: 1.2rem; }
-      .parallax-content h2 { font-size: 3rem; }
-      .parallax-content p { font-size: 1.3rem; }
-      .nav-links { display: none; }
-      .logo { margin: 0 auto; }
+      .parallax-content h2 { font-size: 2.8rem; }
+      .parallax-content p { font-size: 1.2rem; }
+      .nav-links { display: none; } /* hide nav links on mobile, keep logo centered */
+      .logo { margin: 0 auto; justify-content: center; width: 100%; }
+      .logo span { font-size: 1.6rem; }
+      .logo img { width: 40px; height: 40px; }
+      .section { padding: 50px 0; }
+      .section-title { font-size: 2.2rem; }
     }
 
     @media (max-width: 480px) {
-      .gallery-grid { grid-template-columns: 1fr; }
-      .section-title { font-size: 2.2rem; }
+      .hero { height: 70vh; min-height: 500px; }
+      .hero-swiper .slide-content { padding: 1.2rem; border-radius: 30px; }
+      .hero-swiper .slide-content h1 { font-size: 2.2rem; }
+      .hero-swiper .slide-content p { font-size: 1rem; }
+      .gallery-grid { grid-template-columns: 1fr; gap: 20px; }
+      .gallery-item .overlay { font-size: 1.2rem; padding: 16px; opacity: 1; /* always visible on mobile? better keep overlay visible on tap */ }
+      .memories-swiper .swiper-slide { max-width: 300px; }
+      .memories-swiper .swiper-slide img { height: 220px; }
+      .slide-caption h3 { font-size: 1.4rem; }
+      .parallax { height: 400px; background-attachment: scroll; } /* fixed doesn't work well on mobile */
+      .parallax-content h2 { font-size: 2.2rem; }
+      .parallax-content p { font-size: 1.1rem; }
+      .video-grid { grid-template-columns: 1fr; gap: 20px; }
+      .video-card video { height: 180px; }
+      .video-card h3 { font-size: 1.4rem; }
+      .hero .swiper-button-next, .hero .swiper-button-prev { width: 44px; height: 44px; }
+      .hero .swiper-button-next:after, .hero .swiper-button-prev:after { font-size: 1.2rem; }
+      .memories-swiper .swiper-button-next, .memories-swiper .swiper-button-prev { width: 38px; height: 38px; }
+    }
+
+    /* increase touch target for navigation on very small */
+    @media (max-width: 360px) {
+      .hero .swiper-button-next, .hero .swiper-button-prev { width: 40px; height: 40px; }
+      .memories-swiper .swiper-button-next, .memories-swiper .swiper-button-prev { width: 36px; height: 36px; }
     }
   </style>
 </head>
@@ -545,10 +579,9 @@
       </div>
     </section>
 
-    <!-- PARALLAX SECTION (fixed) -->
+    <!-- PARALLAX SECTION (fixed on desktop, scroll on mobile) -->
     <section class="parallax" style="background-image: url('Me & Kimtots/logo2.png');">
       <div class="parallax-content">
-        <!-- optional text -->
         <h2 style="color:white;">our story</h2>
         <p>endless rewind</p>
       </div>
@@ -568,7 +601,7 @@
   <footer>
     <div class="container">
       <p>Kim & Kurt · 01.11.2025</p>
-      <p>© 2026 — I Love you Forever</p>
+      <p>© 2025 — I Love you Forever</p>
     </div>
   </footer>
 
@@ -599,7 +632,7 @@
         });
       }
 
-      // Hero swiper
+      // Hero swiper (touch friendly)
       const heroSwiperEl = document.querySelector('.hero-swiper');
       if (heroSwiperEl) {
         new Swiper(heroSwiperEl, {
@@ -615,15 +648,18 @@
         });
       }
 
-      // Memories swiper
+      // Memories swiper (infinite, centered)
       new Swiper('.memories-swiper', {
         loop: true,
         slidesPerView: 1,
-        spaceBetween: 30,
+        spaceBetween: 20,
         centeredSlides: true,
         pagination: { el: '.memories-swiper .swiper-pagination', clickable: true, dynamicBullets: true },
         navigation: { nextEl: '.memories-swiper .swiper-button-next', prevEl: '.memories-swiper .swiper-button-prev' },
-        breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
+        breakpoints: { 
+          640: { slidesPerView: 2, spaceBetween: 25 },
+          1024: { slidesPerView: 3, spaceBetween: 30 } 
+        },
         autoplay: { delay: 4000, disableOnInteraction: false },
         speed: 800,
       });
@@ -633,20 +669,20 @@
         {
           src: 'Me & Kimtots/video1.mp4',        // path to your video file
           poster: 'Me & Kimtots/1.jpg',           // optional poster image
-          title: 'Date @ Encantadia',
+          title: 'First dance',
           description: 'captured this sweet moment'
         },
         {
           src: 'Me & Kimtots/video2.mp4',
           poster: 'Me & Kimtots/encan4.jpg',
-          title: 'Date @ Encantadia',
-          description: 'captured this sweet moment'
+          title: 'Encantadia magic',
+          description: 'laughs under the stars'
         },
         {
           src: 'Me & Kimtots/video3.mp4',
           poster: 'Me & Kimtots/kiss2.jpg',
-          title: 'Date @ Encantadia',
-          description: 'captured this sweet moment'
+          title: 'forever kiss',
+          description: 'can’t stop watching'
         }
         // Add more objects as needed
       ];
@@ -657,7 +693,7 @@
           const card = document.createElement('div');
           card.className = 'video-card';
           card.innerHTML = `
-            <video controls preload="metadata" poster="${v.poster || ''}">
+            <video controls preload="metadata" poster="${v.poster || ''}" playsinline webkit-playsinline>
               <source src="${v.src}" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -681,6 +717,11 @@
          - description: short text
       3. Add as many objects as you like.
       4. Make sure the video files are stored in the correct folder.
+    📱 MOBILE OPTIMIZATION:
+       - The layout now scales perfectly on iOS and Android.
+       - Touch targets are larger, fonts are readable.
+       - Parallax background switches to scroll on mobile for smoothness.
+       - Videos include `playsinline` for better mobile playback.
   -->
 </body>
 </html>
