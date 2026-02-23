@@ -3,13 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Vartensie · Kim & Kurt memories</title>
+  <title>Vartensie · Kim & Kurt blog</title>
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <!-- modern font (Vartensie / Poppins) -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free) for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS (Animate On Scroll) for section animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
   <style>
+    /* ===== CORPTA FONT (minimalist primary) ===== */
+    /* If you have the actual Corpta font files, replace with @font-face.
+       For now we set a fallback stack that prioritises Corpta (local) then clean system fonts */
     * {
       margin: 0;
       padding: 0;
@@ -17,9 +22,10 @@
     }
 
     body {
-      font-family: 'Vartensie', 'Poppins', sans-serif;
-      background-color: #fcfaff;
-      color: #1f1d2b;
+      /* changed to Corpta font as requested */
+      font-family: 'Corpta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: #ffffff;
+      color: #1e1e2a;
       line-height: 1.6;
       scroll-behavior: smooth;
       -webkit-tap-highlight-color: transparent;
@@ -31,17 +37,17 @@
       padding: 0 24px;
     }
 
-    /* navigation */
+    /* minimalist navigation */
     nav {
       background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
       padding: 12px 0;
       position: sticky;
       top: 0;
       z-index: 50;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      border-bottom: 1px solid #f0eaff;
     }
 
     nav .container {
@@ -54,482 +60,391 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-family: 'Vartensie', cursive;
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      position: relative;
+      /* font inherited from body (Corpta) */
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
       cursor: pointer;
-      animation: logoFadeIn 1.2s ease forwards;
     }
     .logo img {
-      width: 45px;
-      height: 45px;
+      width: 42px;
+      height: 42px;
       object-fit: cover;
       border-radius: 50%;
-      box-shadow: 0 8px 25px rgba(124, 77, 255, 0.5);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
     }
-
     .logo span {
-      background: linear-gradient(135deg, #7c4dff, #c37df2, #7c4dff);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: gradientMove 4s linear infinite;
-      font-size: 1.8rem;
+      color: #2b2b3b;
     }
-
     .logo:hover img {
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 12px 35px rgba(124, 77, 255, 0.7);
+      transform: scale(1.03);
     }
 
-    .logo:hover span {
-      letter-spacing: 2px;
-    }
-
-    @keyframes gradientMove {
-      0% { background-position: 0% center; }
-      100% { background-position: 200% center; }
-    }
-
-    @keyframes logoFadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
     .nav-links {
       display: flex;
       gap: 2rem;
     }
-
     .nav-links a {
       text-decoration: none;
-      font-weight: 500;
-      color: #2d2a3b;
-      transition: color 0.2s;
-      font-size: 1rem;
-      padding: 8px 0;
-      display: inline-block;
+      font-weight: 400;
+      color: #3a3a4a;
+      font-size: 0.95rem;
+      padding: 6px 0;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
     }
-
     .nav-links a:hover {
-      color: #7c4dff;
+      border-bottom-color: #b4a5d0;
+      color: #4a3b68;
     }
 
-    /* ----- HERO CAROUSEL (with blur transition) ----- */
+    /* ----- HERO (carousel) minimalist ----- */
     .hero {
       height: 90vh;
       min-height: 600px;
       position: relative;
       overflow: hidden;
     }
-
     .hero-swiper {
       width: 100%;
       height: 100%;
     }
-
     .hero-swiper .swiper-slide {
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-
     .hero-swiper .slide-bg {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background-size: cover;
       background-position: center;
       z-index: 0;
+      transition: transform 0.4s ease;
     }
-
+    .hero-swiper .swiper-slide:hover .slide-bg {
+      transform: scale(1.02);
+    }
     .hero-swiper .slide-content {
       position: relative;
       z-index: 10;
       text-align: center;
       color: white;
-      max-width: 900px;
-      padding: 1.5rem;
-      text-shadow: 0 4px 30px rgba(0,0,0,0.4);
-      background: rgba(0,0,0,0.2);
-      backdrop-filter: blur(4px);
-      border-radius: 40px;
-      margin: 0 20px;
-      width: 90%;
+      max-width: 800px;
+      padding: 1.5rem 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(3px);
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: background 0.3s ease, backdrop-filter 0.3s ease;
     }
-
+    .hero-swiper .swiper-slide:hover .slide-content {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+    }
     .hero-swiper .slide-content h1 {
-      font-size: 4.5rem;
-      font-weight: 700;
+      font-size: 4rem;
+      font-weight: 500;
       letter-spacing: -0.02em;
       line-height: 1.2;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
       color: white;
     }
-
     .hero-swiper .slide-content p {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: 300;
+      opacity: 0.9;
     }
-
-    /* blur transition effect */
-    .hero-swiper.blur-transition .swiper-wrapper {
-      filter: blur(10px);
-      transition: filter 0.4s ease;
-    }
-
     .hero .swiper-button-next,
     .hero .swiper-button-prev {
       color: white;
-      background: rgba(255,255,255,0.2);
-      width: 56px;
-      height: 56px;
+      background: rgba(255,255,255,0.15);
+      width: 50px; height: 50px;
       border-radius: 50%;
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.3);
-      transition: transform 0.2s;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: 0.2s;
+    }
+    .hero .swiper-button-next:hover,
+    .hero .swiper-button-prev:hover {
+      background: rgba(255,255,255,0.3);
+      transform: scale(1.05);
     }
     .hero .swiper-button-next:after,
-    .hero .swiper-button-prev:after {
-      font-size: 1.5rem;
-    }
-    .hero .swiper-pagination-bullet {
-      background: white;
-      opacity: 0.7;
-    }
-    .hero .swiper-pagination-bullet-active {
-      background: #fff;
-      opacity: 1;
-    }
+    .hero .swiper-button-prev:after { font-size: 1.3rem; }
+    .hero .swiper-pagination-bullet { background: white; opacity: 0.6; }
+    .hero .swiper-pagination-bullet-active { opacity: 1; background: white; }
 
-    /* sections */
+    /* sections minimalist */
     .section {
-      padding: 70px 0;
+      padding: 80px 0;
     }
-
     .section-title {
       text-align: center;
-      font-size: 2.5rem;
-      font-weight: 600;
+      font-size: 2.2rem;
+      font-weight: 450;
       letter-spacing: -0.02em;
       margin-bottom: 3rem;
-      color: #1f1d2b;
+      color: #1e1e2a;
     }
-
     .section-title span {
-      background: linear-gradient(145deg, #7c4dff, #c37df2);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      font-weight: 600;
+      color: #7c6a9c;
     }
-
     .section-title::after {
       content: '';
       display: block;
-      width: 80px;
-      height: 4px;
-      background: linear-gradient(90deg, #a78bfa, #e0c3ff);
-      margin: 15px auto 0;
-      border-radius: 4px;
+      width: 60px;
+      height: 2px;
+      background: #dcd0ff;
+      margin: 16px auto 0;
     }
 
-    .gallery-grid {
+    /* blog card grid (minimalist) + hover animations */
+    .blog-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
     }
-
-    .gallery-item {
-      position: relative;
-      border-radius: 24px;
+    .blog-card {
+      background: #ffffff;
+      border-radius: 20px;
       overflow: hidden;
-      aspect-ratio: 4 / 3;
-      box-shadow: 0 20px 35px -8px rgba(100, 70, 150, 0.2);
-      transition: all 0.3s ease;
-      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+      border: 1px solid #f3effa;
     }
-
-    .gallery-item img {
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -10px rgba(80, 60, 150, 0.12);
+    }
+    .blog-card img {
       width: 100%;
-      height: 100%;
+      height: 240px;
       object-fit: cover;
-      transition: transform 0.7s ease;
+      display: block;
+      transition: transform 0.4s ease;
     }
-
-    .gallery-item:hover img {
-      transform: scale(1.08);
+    .blog-card:hover img {
+      transform: scale(1.02);
     }
-
-    .gallery-item .overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(20, 10, 40, 0.8), transparent 60%);
-      display: flex;
-      align-items: flex-end;
-      padding: 20px;
-      color: white;
+    .blog-content {
+      padding: 22px 18px 26px;
+    }
+    .blog-content h3 {
+      font-size: 1.5rem;
       font-weight: 500;
-      font-size: 1.2rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      margin-bottom: 6px;
+      color: #23212e;
+    }
+    .blog-content .meta {
+      font-size: 0.8rem;
+      color: #9a92b5;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+    .blog-content p {
+      color: #4b4563;
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+    .blog-content .read-link {
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #7c6a9c;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .blog-content .read-link:hover {
+      border-bottom-color: #7c6a9c;
+      color: #4a3b68;
     }
 
-    .gallery-item:hover .overlay {
-      opacity: 1;
-    }
-
+    /* memories carousel (swiper) minimal + hover */
     .memories-carousel {
-      background: #f5f0ff;
+      background: #faf8ff;
       border-radius: 60px 60px 0 0;
+      padding: 70px 0 90px;
     }
-
     .memories-swiper {
       width: 100%;
-      padding: 20px 0 60px 0;
+      padding: 20px 0 60px;
     }
-
     .memories-swiper .swiper-slide {
       background: white;
-      border-radius: 28px;
+      border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 25px 45px -12px rgba(90, 60, 160, 0.25);
-      transition: transform 0.2s;
-      max-width: 360px;
+      box-shadow: 0 12px 30px -8px rgba(0,0,0,0.05);
+      border: 1px solid #f1ecfb;
+      max-width: 340px;
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
     }
-
+    .memories-swiper .swiper-slide:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 25px 35px -12px rgba(80, 60, 150, 0.15);
+    }
     .memories-swiper .swiper-slide img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
+      width: 100%; height: 240px; object-fit: cover;
+      transition: transform 0.4s ease;
     }
-
+    .memories-swiper .swiper-slide:hover img {
+      transform: scale(1.02);
+    }
     .slide-caption {
-      padding: 22px 18px 26px;
-      background: white;
+      padding: 20px 18px 24px;
     }
+    .slide-caption h3 { font-size: 1.4rem; font-weight: 500; margin-bottom: 4px; }
+    .slide-caption p { color: #746b91; font-size: 0.9rem; }
 
-    .slide-caption h3 {
-      font-size: 1.6rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: #1f1d2b;
-    }
-
-    .slide-caption p {
-      color: #6f658d;
-      font-weight: 400;
-      font-size: 0.95rem;
-    }
-
-    .memories-swiper .swiper-button-next,
-    .memories-swiper .swiper-button-prev {
-      color: #7c4dff;
-      background: white;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      box-shadow: 0 10px 25px rgba(124, 77, 255, 0.25);
-      transition: 0.2s;
-    }
-
-    .memories-swiper .swiper-button-next:after,
-    .memories-swiper .swiper-button-prev:after {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-
-    .memories-swiper .swiper-pagination-bullet-active {
-      background: #7c4dff !important;
-    }
-
+    /* parallax minimal (subtle hover on overlay) */
     .parallax {
       background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      height: 500px;
+      height: 460px;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       isolation: isolate;
+      border-top: 1px solid #f0eaff;
+      border-bottom: 1px solid #f0eaff;
     }
-
     .parallax::before {
       content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(15, 10, 30, 0.3);
+      position: absolute; inset: 0;
+      background: rgba(30, 20, 40, 0.15);
       backdrop-filter: blur(2px);
       z-index: 1;
+      transition: backdrop-filter 0.3s ease, background 0.3s ease;
     }
-
+    .parallax:hover::before {
+      backdrop-filter: blur(4px);
+      background: rgba(30, 20, 40, 0.2);
+    }
     .parallax-content {
-      position: relative;
-      z-index: 2;
-      max-width: 900px;
+      position: relative; z-index: 2;
+      text-align: center; color: white;
       padding: 2rem;
-      text-align: center;
-      color: white;
     }
+    .parallax-content h2 { font-size: 3.2rem; font-weight: 400; letter-spacing: -0.02em; }
+    .parallax-content p { font-size: 1.2rem; font-weight: 300; opacity: 0.9; }
 
-    .parallax-content h2 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .parallax-content p {
-      font-size: 1.4rem;
-      font-weight: 300;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    }
-
-    /* ----- VIDEO GALLERY ----- */
+    /* video grid (blog style) + hover */
     .video-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 28px;
+      gap: 32px;
       margin-top: 30px;
     }
-
     .video-card {
       background: white;
-      border-radius: 28px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 20px 40px -12px rgba(70, 40, 120, 0.15);
-      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid #f3effa;
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
     }
-
     .video-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 30px 45px -15px #7b4dff4d;
+      box-shadow: 0 20px 30px -10px rgba(80, 60, 150, 0.12);
     }
-
     .video-card video {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      background: #1e1a2b;
-      display: block;
+      width: 100%; height: 200px; object-fit: cover; background: #1e1a2b;
+      transition: transform 0.4s ease;
     }
-
-    .video-card-content {
-      padding: 20px 18px 24px;
+    .video-card:hover video {
+      transform: scale(1.02);
     }
+    .video-card-content { padding: 20px 18px 24px; }
+    .video-card h3 { font-size: 1.4rem; font-weight: 500; margin-bottom: 6px; }
+    .video-card p { color: #5f5a72; font-size: 0.9rem; }
 
-    .video-card h3 {
-      font-size: 1.6rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: #211d33;
-    }
-
-    .video-card p {
-      color: #5f5a72;
-      font-size: 0.95rem;
-    }
-
+    /* footer with social media */
     footer {
-      background: #1b1725;
-      color: #d6cef0;
-      padding: 40px 0;
+      background: #faf8ff;
+      color: #4f4b63;
+      padding: 50px 0 30px;
       text-align: center;
-      font-size: 1rem;
+      border-top: 1px solid #e8e0f5;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+    .social-links a {
+      color: #6b5f87;
+      font-size: 1.6rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .social-links a:hover {
+      color: #4a3b68;
+      transform: scale(1.15) translateY(-2px);
+    }
+    footer p {
+      font-size: 0.95rem;
+      color: #716b88;
+    }
+    footer p:first-of-type {
+      font-weight: 450;
+      color: #3b354b;
     }
 
-    footer p:first-child {
-      font-weight: 500;
-      font-size: 1.2rem;
-      margin-bottom: 6px;
-      color: #ffffffd9;
-    }
-
-    /* ===== MOBILE FRIENDLY TWEAKS ===== */
+    /* responsive */
     @media (max-width: 1024px) {
-      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-      .hero-swiper .slide-content h1 { font-size: 3.5rem; }
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-swiper .slide-content h1 { font-size: 3.2rem; }
     }
-
     @media (max-width: 768px) {
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .hero-swiper .slide-content h1 { font-size: 2.8rem; }
-      .hero-swiper .slide-content p { font-size: 1.2rem; }
-      .parallax-content h2 { font-size: 2.8rem; }
-      .parallax-content p { font-size: 1.2rem; }
-      .nav-links { display: none; } /* hide nav links on mobile, keep logo centered */
+      .blog-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
       .logo { margin: 0 auto; justify-content: center; width: 100%; }
-      .logo span { font-size: 1.6rem; }
-      .logo img { width: 40px; height: 40px; }
-      .section { padding: 50px 0; }
-      .section-title { font-size: 2.2rem; }
-    }
-
-    @media (max-width: 480px) {
       .hero { height: 70vh; min-height: 500px; }
-      .hero-swiper .slide-content { padding: 1.2rem; border-radius: 30px; }
-      .hero-swiper .slide-content h1 { font-size: 2.2rem; }
-      .hero-swiper .slide-content p { font-size: 1rem; }
-      .gallery-grid { grid-template-columns: 1fr; gap: 20px; }
-      .gallery-item .overlay { font-size: 1.2rem; padding: 16px; opacity: 1; /* always visible on mobile? better keep overlay visible on tap */ }
-      .memories-swiper .swiper-slide { max-width: 300px; }
-      .memories-swiper .swiper-slide img { height: 220px; }
-      .slide-caption h3 { font-size: 1.4rem; }
-      .parallax { height: 400px; background-attachment: scroll; } /* fixed doesn't work well on mobile */
-      .parallax-content h2 { font-size: 2.2rem; }
-      .parallax-content p { font-size: 1.1rem; }
-      .video-grid { grid-template-columns: 1fr; gap: 20px; }
-      .video-card video { height: 180px; }
-      .video-card h3 { font-size: 1.4rem; }
-      .hero .swiper-button-next, .hero .swiper-button-prev { width: 44px; height: 44px; }
-      .hero .swiper-button-next:after, .hero .swiper-button-prev:after { font-size: 1.2rem; }
-      .memories-swiper .swiper-button-next, .memories-swiper .swiper-button-prev { width: 38px; height: 38px; }
+      .hero-swiper .slide-content h1 { font-size: 2.6rem; }
+      .hero-swiper .slide-content p { font-size: 1.1rem; }
+      .parallax-content h2 { font-size: 2.5rem; }
+      .section { padding: 60px 0; }
     }
-
-    /* increase touch target for navigation on very small */
-    @media (max-width: 360px) {
-      .hero .swiper-button-next, .hero .swiper-button-prev { width: 40px; height: 40px; }
-      .memories-swiper .swiper-button-next, .memories-swiper .swiper-button-prev { width: 36px; height: 36px; }
+    @media (max-width: 480px) {
+      .hero-swiper .slide-content { padding: 1.2rem; border-radius: 24px; }
+      .hero-swiper .slide-content h1 { font-size: 2.2rem; }
+      .blog-content { padding: 18px; }
+      .blog-card img { height: 200px; }
+      .parallax { height: 360px; background-attachment: scroll; }
+      .social-links { gap: 22px; }
+      .social-links a { font-size: 1.4rem; }
     }
   </style>
 </head>
 <body>
   <nav>
     <div class="container">
-      <div class="logo">
-        <img src="Me & Kimtots/logo2.png" alt="Kim & Kurt Logo">
+      <div class="logo" data-aos="fade-down" data-aos-duration="800">
+        <img src="Me & Kimtots/logo2.png" alt="Kim & Kurt">
         <span>KIM & KURT</span>
       </div>
       <div class="nav-links">
         <a href="#">home</a>
+        <a href="#">stories</a>
         <a href="#">gallery</a>
-        <a href="#">memories</a>
-        <a href="#">blog</a>
-        <a href="#">contact</a>
+        <a href="#">about</a>
       </div>
     </div>
   </nav>
 
   <main>
-    <!-- HERO CAROUSEL (dynamic) -->
-    <section class="hero">
+    <!-- HERO (animated) -->
+    <section class="hero" data-aos="fade" data-aos-duration="1000">
       <div class="swiper hero-swiper">
         <div class="swiper-wrapper" id="hero-swiper-wrapper">
-          <!-- Slides generated from JS -->
+          <!-- JS fills here -->
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -537,40 +452,87 @@
       </div>
     </section>
 
-    <!-- GALLERY: Encantadia -->
+    <!-- BLOG SECTION 1: Encantadia date (blog cards) -->
     <section class="section">
       <div class="container">
-        <h2 class="section-title"><span>Gallery</span> · Dating @ Encantadia</h2>
-        <div class="gallery-grid">
-          <div class="gallery-item"><img src="Me & Kimtots/encan1.jpg" alt="encantadia 1"><div class="overlay">magic moment</div></div>
-          <div class="gallery-item"><img src="Me & Kimtots/encan3.jpg" alt="encantadia 3"><div class="overlay">hidden fall</div></div>
-          <div class="gallery-item"><img src="Me & Kimtots/encan4.jpg" alt="encantadia 4"><div class="overlay">electric nights</div></div>
+        <h2 class="section-title" data-aos="fade-up"><span>encantadia</span> · Lunch Date</h2>
+        <div class="blog-grid">
+          <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
+            <img src="Me & Kimtots/encan1.jpg" alt="enchanted falls">
+            <div class="blog-content">
+              <h3>KIM & KURT</h3>
+              <div class="meta">Feb 13 · 3 min read</div>
+              <p>Inlove with You.</p>
+              <a href="#" class="read-link">read story →</a>
+            </div>
+          </article>
+          <article class="blog-card" data-aos="fade-up" data-aos-delay="150">
+            <img src="Me & Kimtots/encan3.jpg" alt="hidden fall">
+            <div class="blog-content">
+              <h3>KIM & KURT</h3>
+              <div class="meta">Feb 13 · 2 min read</div>
+              <p>Date With you</p>
+              <a href="#" class="read-link">read story →</a>
+            </div>
+          </article>
+          <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
+            <img src="Me & Kimtots/encan4.jpg" alt="electric nights">
+            <div class="blog-content">
+              <h3>KIM & KURT</h3>
+              <div class="meta">Feb 13 · 4 min read</div>
+              <p>Eat with you.</p>
+              <a href="#" class="read-link">read story →</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- GALLERY: WinterWonderLand -->
+    <!-- BLOG SECTION 2: WinterWonderLand -->
     <section class="section">
       <div class="container">
-        <h2 class="section-title"><span>Gallery</span> · Dating @ WinterWonderLand</h2>
-        <div class="gallery-grid">
-          <div class="gallery-item"><img src="Me & Kimtots/out1.jpg" alt="winter 1"><div class="overlay">frosty kiss</div></div>
-          <div class="gallery-item"><img src="Me & Kimtots/out2.jpg" alt="winter 2"><div class="overlay">snowy hug</div></div>
+        <h2 class="section-title" data-aos="fade-up"><span>winter wonderland</span> · snow & smiles</h2>
+        <div class="blog-grid">
+          <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
+            <img src="Me & Kimtots/out1.jpg" alt="frosty kiss">
+            <div class="blog-content">
+              <h3>frosty kiss</h3>
+              <div class="meta">Feb 13 · 3 min read</div>
+              <p>First snow of the season. Your nose was pink, but your smile warmer than cocoa.</p>
+              <a href="#" class="read-link">read story →</a>
+            </div>
+          </article>
+          <article class="blog-card" data-aos="fade-up" data-aos-delay="150">
+            <img src="Me & Kimtots/out2.jpg" alt="snowy hug">
+            <div class="blog-content">
+              <h3>snowy hug</h3>
+              <div class="meta">Feb 13 · 2 min read</div>
+              <p>We built a tiny snowman and named it after us. It melted, but we won't.</p>
+              <a href="#" class="read-link">read story →</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- MEMORIES CAROUSEL (infinite) -->
-    <section class="section memories-carousel">
+    <!-- MEMORIES CAROUSEL (infinite) with animation -->
+    <section class="section memories-carousel" data-aos="fade-up">
       <div class="container">
-        <h2 class="section-title"><span>Bonding With You</span> · Kim & Kurt</h2>
-        <div class="swiper memories-swiper">
+        <h2 class="section-title"><span>Bonding with you</span> · snapshots</h2>
+        <div class="swiper memories-swiper" data-aos="zoom-in" data-aos-duration="600">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="Me & Kimtots/mirror1.jpg" alt="mirror1"><div class="slide-caption"><h3>Kim & Kurt</h3><p>Always Love you</p></div></div>
-            <div class="swiper-slide"><img src="Me & Kimtots/mirror2.jpg" alt="mirror2"><div class="slide-caption"><h3>Kim & Kurt</h3><p>Always Love you</p></div></div>
-            <div class="swiper-slide"><img src="Me & Kimtots/mirror3.jpg" alt="mirror3"><div class="slide-caption"><h3>Kim & Kurt</h3><p>Always Love you</p></div></div>
-            <div class="swiper-slide"><img src="Me & Kimtots/1.jpg" alt="memory1"><div class="slide-caption"><h3>Kim & Kurt</h3><p>Always Love you</p></div></div>
-            <div class="swiper-slide"><img src="Me & Kimtots/2.jpg" alt="memory2"><div class="slide-caption"><h3>Kim & Kurt</h3><p>Always Love you</p></div></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/mirror1.jpg" alt="mirror1"><div class="slide-caption"></div></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/mirror2.jpg" alt="mirror2"><div class="slide-caption"></div></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/mirror3.jpg" alt="mirror3"><div class="slide-caption"></div></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/1.jpg" alt="memory1"><div class="slide-caption"></div></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/2.jpg" alt="memory2"><div class="slide-caption"></div></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/today1 (1).jpg" alt="memory2"><div class="slide-caption"></div></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/today1 (2).jpg" alt="memory2"><div class="slide-caption"></div></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/today1 (3).jpg" alt="memory2"><div class="slide-caption"></div></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/today1 (4).jpg" alt="memory2"><div class="slide-caption"></div></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/today1 (5).jpg" alt="memory2"><div class="slide-caption"></div></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/today1 (6).jpg" alt="memory2"><div class="slide-caption"></div></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/today1 (7).jpg" alt="memory2"><div class="slide-caption"></div></div>
           </div>
           <div class="swiper-button-next"></div>
           <div class="swiper-button-prev"></div>
@@ -579,43 +541,51 @@
       </div>
     </section>
 
-    <!-- PARALLAX SECTION (fixed on desktop, scroll on mobile) -->
-    <section class="parallax" style="background-image: url('Me & Kimtots/logo2.png');">
+    <!-- PARALLAX (minimal) -->
+    <section class="parallax" style="background-image: url('Me & Kimtots/logo2.png');" data-aos="fade" data-aos-duration="1200">
       <div class="parallax-content">
-        <h2 style="color:white;">our story</h2>
-        <p>endless rewind</p>
+        <h2>our story</h2>
+        <p>Endless Love</p>
       </div>
     </section>
 
-    <!-- ===== VIDEO MEMORIES (replaces blog preview) ===== -->
+    <!-- VIDEO MEMORIES (blog style) -->
     <section class="section">
       <div class="container">
-        <h2 class="section-title"><span>Video</span> memories</h2>
-        <div class="video-grid" id="video-grid-container">
-          <!-- Videos will be inserted here by JavaScript -->
+        <h2 class="section-title" data-aos="fade-up"><span>video</span> memories</h2>
+        <div class="video-grid" id="video-grid-container" data-aos="fade-up" data-aos-delay="100">
+          <!-- videos injected by JS -->
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
+  <!-- FOOTER with social media icons (minimal) -->
+  <footer data-aos="fade-up" data-aos-offset="50">
     <div class="container">
+      <div class="social-links">
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+      </div>
       <p>Kim & Kurt · 01.11.2025</p>
       <p>© 2025 — I Love you Forever</p>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     (function() {
-      // ========== 1. HERO IMAGES (customize here) ==========
+      // ---------- HERO images ----------
       const heroImages = [
-        { url: 'Me & Kimtots/1.jpg', title: 'Me & Kimtots', subtitle: 'I Love you so Much' },
-        { url: 'Me & Kimtots/3.jpg', title: 'moments like these', subtitle: 'I Love you Forever' },
-        { url: 'Me & Kimtots/encan4.jpg', title: 'Date with you', subtitle: 'I Love you so Much' },
-        { url: 'Me & Kimtots/kiss2.jpg', title: 'Forever Love', subtitle: 'My Love will never end' }
+        { url: 'Me & Kimtots/today1 (1).jpg', title: 'Me & Kimtots', subtitle: 'I Love you so Much' },
+        { url: 'Me & Kimtots/today1 (3).jpg', title: 'moments like these', subtitle: 'I Love you Forever' },
+        { url: 'Me & Kimtots/today1 (5).jpg', title: 'Date with you', subtitle: 'I Love you so Much' },
+        { url: 'Me & Kimtots/today1 (7).jpg', title: 'Forever Love', subtitle: 'My Love will never end' }
       ];
-
       const wrapper = document.getElementById('hero-swiper-wrapper');
       if (wrapper) {
         heroImages.forEach(img => {
@@ -632,7 +602,7 @@
         });
       }
 
-      // Hero swiper (touch friendly)
+      // ---------- Swiper: hero ----------
       const heroSwiperEl = document.querySelector('.hero-swiper');
       if (heroSwiperEl) {
         new Swiper(heroSwiperEl, {
@@ -648,7 +618,7 @@
         });
       }
 
-      // Memories swiper (infinite, centered)
+      // ---------- Swiper: memories carousel ----------
       new Swiper('.memories-swiper', {
         loop: true,
         slidesPerView: 1,
@@ -664,29 +634,12 @@
         speed: 800,
       });
 
-      // ========== 2. VIDEO MEMORIES — ADD YOUR OWN VIDEOS HERE ==========
+      // ---------- VIDEO MEMORIES (edit array for your own videos) ----------
       const videoMemories = [
-        {
-          src: 'Me & Kimtots/video1.mp4',        // path to your video file
-          poster: 'Me & Kimtots/1.jpg',           // optional poster image
-          title: 'First dance',
-          description: 'captured this sweet moment'
-        },
-        {
-          src: 'Me & Kimtots/video2.mp4',
-          poster: 'Me & Kimtots/encan4.jpg',
-          title: 'Encantadia magic',
-          description: 'laughs under the stars'
-        },
-        {
-          src: 'Me & Kimtots/video3.mp4',
-          poster: 'Me & Kimtots/kiss2.jpg',
-          title: 'forever kiss',
-          description: 'can’t stop watching'
-        }
-        // Add more objects as needed
+        { src: 'Me & Kimtots/video1.mp4', poster: 'Me & Kimtots/1.jpg', title: 'Eat Bonding', description: 'TimeLapsed' },
+        { src: 'Me & Kimtots/video2.mp4', poster: 'Me & Kimtots/encan4.jpg', title: 'Lunch Date', description: 'With You' },
+        { src: 'Me & Kimtots/video3.mp4', poster: 'Me & Kimtots/kiss2.jpg', title: 'forever kiss', description: 'can’t stop watching' }
       ];
-
       const videoGrid = document.getElementById('video-grid-container');
       if (videoGrid) {
         videoMemories.forEach(v => {
@@ -695,7 +648,6 @@
           card.innerHTML = `
             <video controls preload="metadata" poster="${v.poster || ''}" playsinline webkit-playsinline>
               <source src="${v.src}" type="video/mp4">
-              Your browser does not support the video tag.
             </video>
             <div class="video-card-content">
               <h3>${v.title}</h3>
@@ -705,23 +657,19 @@
           videoGrid.appendChild(card);
         });
       }
+
+      // ---------- AOS initialization ----------
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 60,
+        easing: 'ease-out-cubic'
+      });
     })();
   </script>
-  <!-- INSTRUCTIONS:
-    🔧 TO ADD YOUR OWN VIDEOS:
-      1. Locate the `videoMemories` array in the JavaScript above.
-      2. Each entry needs:
-         - src: path to your .mp4 file (e.g., 'Me & Kimtots/myvideo.mp4')
-         - poster: (optional) path to a thumbnail image
-         - title: short title
-         - description: short text
-      3. Add as many objects as you like.
-      4. Make sure the video files are stored in the correct folder.
-    📱 MOBILE OPTIMIZATION:
-       - The layout now scales perfectly on iOS and Android.
-       - Touch targets are larger, fonts are readable.
-       - Parallax background switches to scroll on mobile for smoothness.
-       - Videos include `playsinline` for better mobile playback.
-  -->
+  <!-- INSTRUCTION: Add your own videos in videoMemories array, update image paths. 
+       Social icons in footer link to # — replace with real profiles. 
+       All fonts set to 'Corpta' (fallback stack). Hover effects added to all sections as requested. -->
+       <!-- Elegant UI/UX color palette: soft lavender, lilac, warm off-white, deep charcoal-lavender. All fonts Corpta. Hover effects active on all sections. -->
 </body>
 </html>
