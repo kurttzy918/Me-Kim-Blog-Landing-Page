@@ -10,11 +10,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- AOS (Animate On Scroll) for section animations -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- MODERN MINIMALIST FONT: Inter + Corpta fallback -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   
   <style>
-    /* ===== CORPTA FONT (minimalist primary) ===== */
-    /* If you have the actual Corpta font files, replace with @font-face.
-       For now we set a fallback stack that prioritises Corpta (local) then clean system fonts */
+    /* ===== MODERN MINIMALIST TYPOGRAPHY ===== */
     * {
       margin: 0;
       padding: 0;
@@ -22,13 +22,15 @@
     }
 
     body {
-      /* changed to Corpta font as requested */
-      font-family: 'Corpta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      /* Inter first for modern clean look, Corpta as secondary (kept for personality) */
+      font-family: 'Inter', 'Corpta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       background-color: #ffffff;
       color: #1e1e2a;
-      line-height: 1.6;
+      line-height: 1.5;
       scroll-behavior: smooth;
       -webkit-tap-highlight-color: transparent;
+      font-weight: 350;  /* lighter, more minimalist weight */
+      letter-spacing: -0.01em;
     }
 
     .container {
@@ -59,16 +61,15 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
-      /* font inherited from body (Corpta) */
+      gap: 14px;  /* increased gap for better balance */
       font-size: 1.6rem;
-      font-weight: 600;
+      font-weight: 450;
       letter-spacing: -0.02em;
       cursor: pointer;
     }
     .logo img {
-      width: 42px;
-      height: 42px;
+      width: 48px;   /* slightly larger for proportion with bigger text */
+      height: 48px;
       object-fit: cover;
       border-radius: 50%;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
@@ -76,6 +77,11 @@
     }
     .logo span {
       color: #2b2b3b;
+      /* --- MAKE THE SPAN BIGGER & BOLDER (focus point) --- */
+      font-size: 2.4rem;        /* increased from 1.6rem */
+      font-weight: 600;         /* semi-bold for presence */
+      letter-spacing: -0.03em;  /* tighter for modern look */
+      line-height: 1.2;
     }
     .logo:hover img {
       transform: scale(1.03);
@@ -147,7 +153,7 @@
     }
     .hero-swiper .slide-content h1 {
       font-size: 4rem;
-      font-weight: 500;
+      font-weight: 450;        /* lighter modern */
       letter-spacing: -0.02em;
       line-height: 1.2;
       margin-bottom: 0.3rem;
@@ -185,13 +191,13 @@
     .section-title {
       text-align: center;
       font-size: 2.2rem;
-      font-weight: 450;
+      font-weight: 400;        /* lighter */
       letter-spacing: -0.02em;
       margin-bottom: 3rem;
       color: #1e1e2a;
     }
     .section-title span {
-      font-weight: 600;
+      font-weight: 550;        /* slightly bolder span accent */
       color: #7c6a9c;
     }
     .section-title::after {
@@ -235,10 +241,11 @@
       padding: 22px 18px 26px;
     }
     .blog-content h3 {
-      font-size: 1.5rem;
+      font-size: 1.6rem;       /* slightly larger for emphasis */
       font-weight: 500;
       margin-bottom: 6px;
       color: #23212e;
+      letter-spacing: -0.01em;
     }
     .blog-content .meta {
       font-size: 0.8rem;
@@ -251,6 +258,7 @@
       color: #4b4563;
       font-size: 0.95rem;
       margin-bottom: 18px;
+      font-weight: 350;
     }
     .blog-content .read-link {
       text-decoration: none;
@@ -363,7 +371,7 @@
     }
     .video-card-content { padding: 20px 18px 24px; }
     .video-card h3 { font-size: 1.4rem; font-weight: 500; margin-bottom: 6px; }
-    .video-card p { color: #5f5a72; font-size: 0.9rem; }
+    .video-card p { color: #5f5a72; font-size: 0.9rem; font-weight: 350; }
 
     /* footer with social media */
     footer {
@@ -397,15 +405,17 @@
       color: #3b354b;
     }
 
-    /* responsive */
+    /* responsive adjustments for bigger logo span */
     @media (max-width: 1024px) {
       .blog-grid { grid-template-columns: repeat(2, 1fr); }
       .hero-swiper .slide-content h1 { font-size: 3.2rem; }
+      .logo span { font-size: 2.2rem; } /* scale down slightly */
     }
     @media (max-width: 768px) {
       .blog-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
-      .logo { margin: 0 auto; justify-content: center; width: 100%; }
+      .logo { margin: 0 auto; justify-content: center; width: 100%; gap: 10px; }
+      .logo span { font-size: 2.0rem; }
       .hero { height: 70vh; min-height: 500px; }
       .hero-swiper .slide-content h1 { font-size: 2.6rem; }
       .hero-swiper .slide-content p { font-size: 1.1rem; }
@@ -420,6 +430,7 @@
       .parallax { height: 360px; background-attachment: scroll; }
       .social-links { gap: 22px; }
       .social-links a { font-size: 1.4rem; }
+      .logo span { font-size: 1.8rem; } /* still larger than original */
     }
   </style>
 </head>
@@ -428,7 +439,7 @@
     <div class="container">
       <div class="logo" data-aos="fade-down" data-aos-duration="800">
         <img src="Me & Kimtots/logo2.png" alt="Kim & Kurt">
-        <span>KIM & KURT</span>
+        <span>KIM & KURT</span>   <!-- this is now bigger and bolder -->
       </div>
       <div class="nav-links">
         <a href="#">home</a>
@@ -491,7 +502,7 @@
     <!-- BLOG SECTION 2: WinterWonderLand -->
     <section class="section">
       <div class="container">
-        <h2 class="section-title" data-aos="fade-up"><span>winter wonderland</span> · snow & smiles</h2>
+        <h2 class="section-title" data-aos="fade-up"><span>winter wonderland</span> · Gala</h2>
         <div class="blog-grid">
           <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
             <img src="Me & Kimtots/out1.jpg" alt="frosty kiss">
@@ -660,8 +671,8 @@
       // ---------- VIDEO MEMORIES (edit array for your own videos) ----------
       const videoMemories = [
         { src: 'Me & Kimtots/video1.mp4', poster: 'Me & Kimtots/1.jpg', title: 'Eat Bonding', description: 'TimeLapsed' },
-        { src: 'Me & Kimtots/video2.mp4', poster: 'Me & Kimtots/encan4.jpg', title: 'Lunch Date', description: 'With You' },
-        { src: 'Me & Kimtots/video3.mp4', poster: 'Me & Kimtots/kiss2.jpg', title: 'forever kiss', description: 'can’t stop watching' }
+        { src: 'video1.mp4', poster: '02-27.1.jpg', title: 'Lunch Date', description: 'With You' },
+        { src: 'video2.mp4', poster: '02-27.2.jpg', title: 'forever kiss', description: 'can’t stop watching' }
       ];
       const videoGrid = document.getElementById('video-grid-container');
       if (videoGrid) {
@@ -690,9 +701,6 @@
       });
     })();
   </script>
-  <!-- INSTRUCTION: Add your own videos in videoMemories array, update image paths. 
-       Social icons in footer link to # — replace with real profiles. 
-       All fonts set to 'Corpta' (fallback stack). Hover effects added to all sections as requested. -->
-       <!-- Elegant UI/UX color palette: soft lavender, lilac, warm off-white, deep charcoal-lavender. All fonts Corpta. Hover effects active on all sections. -->
+  <!-- DESIGN: Modern minimalist typography with Inter, bigger KIM & KURT span. Hover animations preserved. -->
 </body>
 </html>
