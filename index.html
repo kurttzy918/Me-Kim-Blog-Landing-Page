@@ -6,31 +6,78 @@
   <title>Vartensie · Kim & Kurt blog</title>
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <!-- Font Awesome 6 (free) for social icons -->
+  <!-- Font Awesome 6 (free) for social icons & theme toggle -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- AOS (Animate On Scroll) for section animations -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <!-- MODERN MINIMALIST FONT: Inter + Corpta fallback -->
+  <!-- MODERN MINIMALIST FONT: Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   
   <style>
-    /* ===== MODERN MINIMALIST TYPOGRAPHY ===== */
+    /* ===== MODERN MINIMALIST TYPOGRAPHY & THEME VARIABLES ===== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    /* LIGHT THEME (default) */
+    :root {
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --text-primary: #1e1e2a;
+      --text-secondary: #4b4563;
+      --text-soft: #746b91;
+      --border-light: #f3effa;
+      --border-strong: #e8e0f5;
+      --nav-bg: rgba(255, 255, 255, 0.8);
+      --footer-bg: #faf8ff;
+      --card-shadow: 0 5px 20px rgba(0,0,0,0.02);
+      --hover-shadow: 0 20px 30px -10px rgba(80, 60, 150, 0.12);
+      --accent: #7c6a9c;
+      --accent-light: #dcd0ff;
+      --hero-overlay: rgba(255, 255, 255, 0.1);
+      --hero-overlay-hover: rgba(255, 255, 255, 0.2);
+      --parallax-overlay: rgba(30, 20, 40, 0.15);
+      --parallax-overlay-hover: rgba(30, 20, 40, 0.2);
+      --icon-color: #6b5f87;
+      --icon-hover: #4a3b68;
+      --transition: background-color 0.3s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    /* DARK THEME */
+    .dark-mode {
+      --bg: #13111c;
+      --surface: #1f1b2b;
+      --text-primary: #edeaf5;
+      --text-secondary: #cbc1e0;
+      --text-soft: #9f94b8;
+      --border-light: #322e40;
+      --border-strong: #403b52;
+      --nav-bg: rgba(20, 17, 28, 0.85);
+      --footer-bg: #1b1726;
+      --card-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      --hover-shadow: 0 20px 30px -8px rgba(160, 130, 230, 0.3);
+      --accent: #b39ddb;
+      --accent-light: #6b5a8e;
+      --hero-overlay: rgba(10, 8, 15, 0.3);
+      --hero-overlay-hover: rgba(20, 15, 30, 0.5);
+      --parallax-overlay: rgba(8, 5, 15, 0.4);
+      --parallax-overlay-hover: rgba(15, 10, 25, 0.6);
+      --icon-color: #ab9ec9;
+      --icon-hover: #d6c9ff;
+    }
+
     body {
-      /* Inter first for modern clean look, Corpta as secondary (kept for personality) */
-      font-family: 'Inter', 'Corpta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background-color: #ffffff;
-      color: #1e1e2a;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-primary);
       line-height: 1.5;
       scroll-behavior: smooth;
       -webkit-tap-highlight-color: transparent;
-      font-weight: 350;  /* lighter, more minimalist weight */
+      font-weight: 350;
       letter-spacing: -0.01em;
+      transition: background-color 0.3s ease, color 0.2s ease;
     }
 
     .container {
@@ -39,9 +86,9 @@
       padding: 0 24px;
     }
 
-    /* minimalist navigation */
+    /* minimalist navigation with theme toggle */
     nav {
-      background: rgba(255, 255, 255, 0.8);
+      background: var(--nav-bg);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       box-shadow: 0 2px 10px rgba(0,0,0,0.02);
@@ -49,7 +96,8 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      border-bottom: 1px solid #f0eaff;
+      border-bottom: 1px solid var(--border-light);
+      transition: background 0.3s ease, border-color 0.2s ease;
     }
 
     nav .container {
@@ -61,14 +109,14 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 14px;  /* increased gap for better balance */
+      gap: 14px;
       font-size: 1.6rem;
       font-weight: 450;
       letter-spacing: -0.02em;
       cursor: pointer;
     }
     .logo img {
-      width: 48px;   /* slightly larger for proportion with bigger text */
+      width: 48px;
       height: 48px;
       object-fit: cover;
       border-radius: 50%;
@@ -76,12 +124,12 @@
       transition: transform 0.3s ease;
     }
     .logo span {
-      color: #2b2b3b;
-      /* --- MAKE THE SPAN BIGGER & BOLDER (focus point) --- */
-      font-size: 2.4rem;        /* increased from 1.6rem */
-      font-weight: 600;         /* semi-bold for presence */
-      letter-spacing: -0.03em;  /* tighter for modern look */
+      color: var(--text-primary);
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
       line-height: 1.2;
+      transition: color 0.2s ease;
     }
     .logo:hover img {
       transform: scale(1.03);
@@ -94,15 +142,41 @@
     .nav-links a {
       text-decoration: none;
       font-weight: 400;
-      color: #3a3a4a;
+      color: var(--text-secondary);
       font-size: 0.95rem;
       padding: 6px 0;
       border-bottom: 1px solid transparent;
       transition: border-color 0.2s, color 0.2s;
     }
     .nav-links a:hover {
-      border-bottom-color: #b4a5d0;
-      color: #4a3b68;
+      border-bottom-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* theme toggle button */
+    .theme-toggle {
+      margin-left: 1.5rem;
+    }
+    .theme-toggle button {
+      background: transparent;
+      border: 1px solid var(--border-light);
+      border-radius: 40px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-size: 1.4rem;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s;
+      backdrop-filter: blur(4px);
+    }
+    .theme-toggle button:hover {
+      background: var(--surface);
+      color: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.02);
     }
 
     /* ----- HERO (carousel) minimalist ----- */
@@ -141,19 +215,19 @@
       color: white;
       max-width: 800px;
       padding: 1.5rem 2rem;
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--hero-overlay);
       backdrop-filter: blur(3px);
       border-radius: 32px;
       border: 1px solid rgba(255,255,255,0.15);
       transition: background 0.3s ease, backdrop-filter 0.3s ease;
     }
     .hero-swiper .swiper-slide:hover .slide-content {
-      background: rgba(255, 255, 255, 0.2);
+      background: var(--hero-overlay-hover);
       backdrop-filter: blur(5px);
     }
     .hero-swiper .slide-content h1 {
       font-size: 4rem;
-      font-weight: 450;        /* lighter modern */
+      font-weight: 450;
       letter-spacing: -0.02em;
       line-height: 1.2;
       margin-bottom: 0.3rem;
@@ -187,26 +261,28 @@
     /* sections minimalist */
     .section {
       padding: 80px 0;
+      transition: background-color 0.3s ease;
     }
     .section-title {
       text-align: center;
       font-size: 2.2rem;
-      font-weight: 400;        /* lighter */
+      font-weight: 400;
       letter-spacing: -0.02em;
       margin-bottom: 3rem;
-      color: #1e1e2a;
+      color: var(--text-primary);
     }
     .section-title span {
-      font-weight: 550;        /* slightly bolder span accent */
-      color: #7c6a9c;
+      font-weight: 550;
+      color: var(--accent);
     }
     .section-title::after {
       content: '';
       display: block;
       width: 60px;
       height: 2px;
-      background: #dcd0ff;
+      background: var(--accent-light);
       margin: 16px auto 0;
+      transition: background 0.2s ease;
     }
 
     /* blog card grid (minimalist) + hover animations */
@@ -216,16 +292,16 @@
       gap: 32px;
     }
     .blog-card {
-      background: #ffffff;
+      background: var(--surface);
       border-radius: 20px;
       overflow: hidden;
-      transition: transform 0.25s ease, box-shadow 0.3s ease;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.02);
-      border: 1px solid #f3effa;
+      transition: transform 0.25s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--border-light);
     }
     .blog-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 20px 30px -10px rgba(80, 60, 150, 0.12);
+      box-shadow: var(--hover-shadow);
     }
     .blog-card img {
       width: 100%;
@@ -241,21 +317,21 @@
       padding: 22px 18px 26px;
     }
     .blog-content h3 {
-      font-size: 1.6rem;       /* slightly larger for emphasis */
+      font-size: 1.6rem;
       font-weight: 500;
       margin-bottom: 6px;
-      color: #23212e;
+      color: var(--text-primary);
       letter-spacing: -0.01em;
     }
     .blog-content .meta {
       font-size: 0.8rem;
-      color: #9a92b5;
+      color: var(--text-soft);
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 12px;
     }
     .blog-content p {
-      color: #4b4563;
+      color: var(--text-secondary);
       font-size: 0.95rem;
       margin-bottom: 18px;
       font-weight: 350;
@@ -264,37 +340,38 @@
       text-decoration: none;
       font-weight: 500;
       font-size: 0.9rem;
-      color: #7c6a9c;
+      color: var(--accent);
       border-bottom: 1px solid transparent;
       transition: border-color 0.2s, color 0.2s;
     }
     .blog-content .read-link:hover {
-      border-bottom-color: #7c6a9c;
-      color: #4a3b68;
+      border-bottom-color: var(--accent);
+      color: var(--accent);
     }
 
     /* memories carousel (swiper) minimal + hover */
     .memories-carousel {
-      background: #faf8ff;
+      background: var(--footer-bg);
       border-radius: 60px 60px 0 0;
       padding: 70px 0 90px;
+      transition: background 0.3s ease;
     }
     .memories-swiper {
       width: 100%;
       padding: 20px 0 60px;
     }
     .memories-swiper .swiper-slide {
-      background: white;
+      background: var(--surface);
       border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 12px 30px -8px rgba(0,0,0,0.05);
-      border: 1px solid #f1ecfb;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--border-light);
       max-width: 340px;
-      transition: transform 0.25s ease, box-shadow 0.3s ease;
+      transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
     }
     .memories-swiper .swiper-slide:hover {
       transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 25px 35px -12px rgba(80, 60, 150, 0.15);
+      box-shadow: var(--hover-shadow);
     }
     .memories-swiper .swiper-slide img {
       width: 100%; height: 240px; object-fit: cover;
@@ -306,8 +383,8 @@
     .slide-caption {
       padding: 20px 18px 24px;
     }
-    .slide-caption h3 { font-size: 1.4rem; font-weight: 500; margin-bottom: 4px; }
-    .slide-caption p { color: #746b91; font-size: 0.9rem; }
+    .slide-caption h3 { font-size: 1.4rem; font-weight: 500; margin-bottom: 4px; color: var(--text-primary); }
+    .slide-caption p { color: var(--text-soft); font-size: 0.9rem; }
 
     /* parallax minimal (subtle hover on overlay) */
     .parallax {
@@ -321,20 +398,20 @@
       justify-content: center;
       position: relative;
       isolation: isolate;
-      border-top: 1px solid #f0eaff;
-      border-bottom: 1px solid #f0eaff;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
     }
     .parallax::before {
       content: '';
       position: absolute; inset: 0;
-      background: rgba(30, 20, 40, 0.15);
+      background: var(--parallax-overlay);
       backdrop-filter: blur(2px);
       z-index: 1;
       transition: backdrop-filter 0.3s ease, background 0.3s ease;
     }
     .parallax:hover::before {
       backdrop-filter: blur(4px);
-      background: rgba(30, 20, 40, 0.2);
+      background: var(--parallax-overlay-hover);
     }
     .parallax-content {
       position: relative; z-index: 2;
@@ -352,15 +429,15 @@
       margin-top: 30px;
     }
     .video-card {
-      background: white;
+      background: var(--surface);
       border-radius: 20px;
       overflow: hidden;
-      border: 1px solid #f3effa;
-      transition: transform 0.25s ease, box-shadow 0.3s ease;
+      border: 1px solid var(--border-light);
+      transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
     }
     .video-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 20px 30px -10px rgba(80, 60, 150, 0.12);
+      box-shadow: var(--hover-shadow);
     }
     .video-card video {
       width: 100%; height: 200px; object-fit: cover; background: #1e1a2b;
@@ -370,16 +447,17 @@
       transform: scale(1.02);
     }
     .video-card-content { padding: 20px 18px 24px; }
-    .video-card h3 { font-size: 1.4rem; font-weight: 500; margin-bottom: 6px; }
-    .video-card p { color: #5f5a72; font-size: 0.9rem; font-weight: 350; }
+    .video-card h3 { font-size: 1.4rem; font-weight: 500; margin-bottom: 6px; color: var(--text-primary); }
+    .video-card p { color: var(--text-secondary); font-size: 0.9rem; font-weight: 350; }
 
     /* footer with social media */
     footer {
-      background: #faf8ff;
-      color: #4f4b63;
+      background: var(--footer-bg);
+      color: var(--text-secondary);
       padding: 50px 0 30px;
       text-align: center;
-      border-top: 1px solid #e8e0f5;
+      border-top: 1px solid var(--border-strong);
+      transition: background 0.3s ease, border-color 0.2s ease;
     }
     .social-links {
       display: flex;
@@ -388,34 +466,35 @@
       margin-bottom: 28px;
     }
     .social-links a {
-      color: #6b5f87;
+      color: var(--icon-color);
       font-size: 1.6rem;
       transition: color 0.2s, transform 0.2s;
     }
     .social-links a:hover {
-      color: #4a3b68;
+      color: var(--icon-hover);
       transform: scale(1.15) translateY(-2px);
     }
     footer p {
       font-size: 0.95rem;
-      color: #716b88;
+      color: var(--text-soft);
     }
     footer p:first-of-type {
       font-weight: 450;
-      color: #3b354b;
+      color: var(--text-primary);
     }
 
-    /* responsive adjustments for bigger logo span */
+    /* responsive adjustments for bigger logo span and toggle */
     @media (max-width: 1024px) {
       .blog-grid { grid-template-columns: repeat(2, 1fr); }
       .hero-swiper .slide-content h1 { font-size: 3.2rem; }
-      .logo span { font-size: 2.2rem; } /* scale down slightly */
+      .logo span { font-size: 2.2rem; }
     }
     @media (max-width: 768px) {
       .blog-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .logo { margin: 0 auto; justify-content: center; width: 100%; gap: 10px; }
       .logo span { font-size: 2.0rem; }
+      .theme-toggle { margin-left: 0; position: absolute; right: 24px; top: 14px; }
       .hero { height: 70vh; min-height: 500px; }
       .hero-swiper .slide-content h1 { font-size: 2.6rem; }
       .hero-swiper .slide-content p { font-size: 1.1rem; }
@@ -430,7 +509,7 @@
       .parallax { height: 360px; background-attachment: scroll; }
       .social-links { gap: 22px; }
       .social-links a { font-size: 1.4rem; }
-      .logo span { font-size: 1.8rem; } /* still larger than original */
+      .logo span { font-size: 1.8rem; }
     }
   </style>
 </head>
@@ -439,13 +518,19 @@
     <div class="container">
       <div class="logo" data-aos="fade-down" data-aos-duration="800">
         <img src="Me & Kimtots/logo2.png" alt="Kim & Kurt">
-        <span>KIM & KURT</span>   <!-- this is now bigger and bolder -->
+        <span>KIM & KURT</span>
       </div>
       <div class="nav-links">
         <a href="#">home</a>
         <a href="#">stories</a>
         <a href="#">gallery</a>
         <a href="#">about</a>
+      </div>
+      <!-- DARK/LIGHT MODE TOGGLE (minimal & elegant) -->
+      <div class="theme-toggle">
+        <button id="theme-toggle-btn" aria-label="Switch between dark and light mode">
+          <i id="theme-icon" class="fas fa-moon"></i> <!-- moon = dark mode indicator (default light) -->
+        </button>
       </div>
     </div>
   </nav>
@@ -526,7 +611,7 @@
       </div>
     </section>
 
-    <!-- MEMORIES CAROUSEL (infinite) with animation -->
+    <!-- MEMORIES CAROUSEL (snapshots) -->
     <section class="section memories-carousel" data-aos="fade-up">
       <div class="container">
         <h2 class="section-title"><span>Bonding with you</span> · snapshots</h2>
@@ -552,7 +637,7 @@
       </div>
     </section>
 
-    <!-- MEMORIES CAROUSEL (infinite) with animation -->
+    <!-- MEMORIES CAROUSEL (First Date) -->
     <section class="section memories-carousel" data-aos="fade-up">
       <div class="container">
         <h2 class="section-title"><span>First Date</span> · snapshots</h2>
@@ -566,7 +651,6 @@
             <div class="swiper-slide"><img src="first meet/Screenshot 2026-02-24 201526.png" alt="memory2"><div class="slide-caption"></div></div>
             <div class="swiper-slide"><img src="first meet/Screenshot 2026-02-24 201533.png" alt="memory2"><div class="slide-caption"></div></div>
             <div class="swiper-slide"><img src="first meet/Screenshot 2026-02-24 201539.png" alt="memory2"><div class="slide-caption"></div></div>
-          
           </div>
           <div class="swiper-button-next"></div>
           <div class="swiper-button-prev"></div>
@@ -594,7 +678,7 @@
     </section>
   </main>
 
-  <!-- FOOTER with social media icons (minimal) -->
+  <!-- FOOTER -->
   <footer data-aos="fade-up" data-aos-offset="50">
     <div class="container">
       <div class="social-links">
@@ -615,10 +699,10 @@
     (function() {
       // ---------- HERO images ----------
       const heroImages = [
-        { url: 'Me & Kimtots/today1 (1).jpg', title: 'Me & Kimtots', subtitle: 'I Love you so Much' },
-        { url: 'Me & Kimtots/today1 (3).jpg', title: 'moments like these', subtitle: 'I Love you Forever' },
-        { url: 'Me & Kimtots/today1 (5).jpg', title: 'Date with you', subtitle: 'I Love you so Much' },
-        { url: 'Me & Kimtots/today1 (7).jpg', title: 'Forever Love', subtitle: 'My Love will never end' }
+        { url: 'Me & Kimtots/0703.png ', title: 'Me & Kimtots', subtitle: 'I Love you so Much' },
+        { url: 'Me & Kimtots/1-0703.png ', title: 'moments like these', subtitle: 'I Love you Forever' },
+        { url: 'Me & Kimtots/2-0703.png ', title: 'Date with you', subtitle: 'I Love you so Much' },
+        
       ];
       const wrapper = document.getElementById('hero-swiper-wrapper');
       if (wrapper) {
@@ -652,27 +736,29 @@
         });
       }
 
-      // ---------- Swiper: memories carousel ----------
-      new Swiper('.memories-swiper', {
-        loop: true,
-        slidesPerView: 1,
-        spaceBetween: 20,
-        centeredSlides: true,
-        pagination: { el: '.memories-swiper .swiper-pagination', clickable: true, dynamicBullets: true },
-        navigation: { nextEl: '.memories-swiper .swiper-button-next', prevEl: '.memories-swiper .swiper-button-prev' },
-        breakpoints: { 
-          640: { slidesPerView: 2, spaceBetween: 25 },
-          1024: { slidesPerView: 3, spaceBetween: 30 } 
-        },
-        autoplay: { delay: 4000, disableOnInteraction: false },
-        speed: 800,
+      // ---------- Swiper: memories carousel (apply to all .memories-swiper) ----------
+      document.querySelectorAll('.memories-swiper').forEach((el) => {
+        new Swiper(el, {
+          loop: true,
+          slidesPerView: 1,
+          spaceBetween: 20,
+          centeredSlides: true,
+          pagination: { el: el.querySelector('.swiper-pagination'), clickable: true, dynamicBullets: true },
+          navigation: { nextEl: el.querySelector('.swiper-button-next'), prevEl: el.querySelector('.swiper-button-prev') },
+          breakpoints: { 
+            640: { slidesPerView: 2, spaceBetween: 25 },
+            1024: { slidesPerView: 3, spaceBetween: 30 } 
+          },
+          autoplay: { delay: 4000, disableOnInteraction: false },
+          speed: 800,
+        });
       });
 
-      // ---------- VIDEO MEMORIES (edit array for your own videos) ----------
+      // ---------- VIDEO MEMORIES ----------
       const videoMemories = [
-        { src: 'Me & Kimtots/video1.mp4', poster: 'Me & Kimtots/1.jpg', title: 'Eat Bonding', description: 'TimeLapsed' },
-        { src: 'Me & Kimtots/video2.mp4', poster: 'Me & Kimtots/kim.jpg', title: 'Lunch Date', description: 'With You' },
-        { src: 'Me & Kimtots/video3.mp4', poster: 'Me & Kimtots/kim2.jpg', title: 'forever kiss', description: 'can’t stop watching' }
+        { src: 'Me & Kimtots/video1.mp4 ', poster: 'Me & Kimtots/1-0703.png ', title: 'Eat Bonding', description: 'TimeLapsed' },
+        { src: 'Me & Kimtots/video2.mp4 ', poster: 'Me & Kimtots/2-0703.png ', title: 'Lunch Date', description: 'With You' },
+        { src: 'Me & Kimtots/video3.mp4 ', poster: 'Me & Kimtots/0703.png ', title: 'forever kiss', description: 'can’t stop watching' }
       ];
       const videoGrid = document.getElementById('video-grid-container');
       if (videoGrid) {
@@ -692,6 +778,37 @@
         });
       }
 
+      // ---------- THEME TOGGLE (Dark/Light mode) ----------
+      const toggleBtn = document.getElementById('theme-toggle-btn');
+      const themeIcon = document.getElementById('theme-icon');
+      
+      // Check localStorage for saved theme
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      } else {
+        // light default
+        themeIcon.classList.add('fa-moon');
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        
+        // update icon
+        if (isDark) {
+          themeIcon.classList.remove('fa-moon');
+          themeIcon.classList.add('fa-sun');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          themeIcon.classList.remove('fa-sun');
+          themeIcon.classList.add('fa-moon');
+          localStorage.setItem('theme', 'light');
+        }
+      });
+
       // ---------- AOS initialization ----------
       AOS.init({
         duration: 800,
@@ -701,6 +818,6 @@
       });
     })();
   </script>
-  <!-- DESIGN: Modern minimalist typography with Inter, bigger KIM & KURT span. Hover animations preserved. -->
+  <!-- DESIGN: Modern minimalist with dark/light toggle, all colors adapt elegantly -->
 </body>
 </html>
