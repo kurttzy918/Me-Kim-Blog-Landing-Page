@@ -3,25 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Vartensie · Kim & Kurt blog</title>
+  <title>Vartensie · Kim & Kurt · gallery with section title</title>
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <!-- Font Awesome 6 (free) for social icons & theme toggle -->
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- AOS (Animate On Scroll) for section animations -->
+  <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <!-- MODERN MINIMALIST FONT: Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <!-- Inter font (base) & modern cursive for hero titles -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+  <!-- Inter font (base) & modern cursive for parallax titles -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
   
   <style>
-    /* ===== MODERN MINIMALIST TYPOGRAPHY & THEME VARIABLES ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* === MODERN MINIMALIST === */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* LIGHT THEME (default) */
     :root {
       --bg: #ffffff;
       --surface: #ffffff;
@@ -42,10 +39,9 @@
       --parallax-overlay-hover: rgba(30, 20, 40, 0.2);
       --icon-color: #6b5f87;
       --icon-hover: #4a3b68;
-      --transition: background-color 0.3s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      --transition: background-color 0.3s ease, color 0.2s ease, border-color 0.2s ease;
     }
 
-    /* DARK THEME */
     .dark-mode {
       --bg: #13111c;
       --surface: #1f1b2b;
@@ -69,7 +65,7 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: var(--bg);
       color: var(--text-primary);
       line-height: 1.5;
@@ -80,13 +76,9 @@
       transition: background-color 0.3s ease, color 0.2s ease;
     }
 
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
 
-    /* minimalist navigation with theme toggle */
+    /* navigation */
     nav {
       background: var(--nav-bg);
       backdrop-filter: blur(10px);
@@ -100,169 +92,92 @@
       transition: background 0.3s ease, border-color 0.2s ease;
     }
 
-    nav .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; }
 
     .logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-size: 1.6rem;
-      font-weight: 450;
-      letter-spacing: -0.02em;
-      cursor: pointer;
+      display: flex; align-items: center; gap: 14px;
+      font-size: 1.6rem; font-weight: 450; letter-spacing: -0.02em; cursor: pointer;
     }
     .logo img {
-      width: 48px;
-      height: 48px;
-      object-fit: cover;
-      border-radius: 50%;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
+      width: 48px; height: 48px; object-fit: cover; border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s ease;
     }
     .logo span {
-      color: var(--text-primary);
-      font-size: 2.4rem;
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      line-height: 1.2;
-      transition: color 0.2s ease;
+      color: var(--text-primary); font-size: 2.4rem; font-weight: 600;
+      letter-spacing: -0.03em; line-height: 1.2; transition: color 0.2s ease;
     }
-    .logo:hover img {
-      transform: scale(1.03);
-    }
+    .logo:hover img { transform: scale(1.03); }
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-    }
+    .nav-links { display: flex; gap: 2rem; }
     .nav-links a {
-      text-decoration: none;
-      font-weight: 400;
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      padding: 6px 0;
-      border-bottom: 1px solid transparent;
+      text-decoration: none; font-weight: 400; color: var(--text-secondary);
+      font-size: 0.95rem; padding: 6px 0; border-bottom: 1px solid transparent;
       transition: border-color 0.2s, color 0.2s;
     }
-    .nav-links a:hover {
-      border-bottom-color: var(--accent);
-      color: var(--accent);
-    }
+    .nav-links a:hover { border-bottom-color: var(--accent); color: var(--accent); }
 
-    /* theme toggle button */
-    .theme-toggle {
-      margin-left: 1.5rem;
-    }
+    .theme-toggle { margin-left: 1.5rem; }
     .theme-toggle button {
-      background: transparent;
-      border: 1px solid var(--border-light);
-      border-radius: 40px;
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: var(--text-secondary);
-      font-size: 1.4rem;
-      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s;
+      background: transparent; border: 1px solid var(--border-light); border-radius: 40px;
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--text-secondary); font-size: 1.4rem;
+      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
       backdrop-filter: blur(4px);
     }
     .theme-toggle button:hover {
-      background: var(--surface);
-      color: var(--accent);
-      border-color: var(--accent);
-      transform: scale(1.02);
+      background: var(--surface); color: var(--accent); border-color: var(--accent); transform: scale(1.02);
     }
 
-    /* ----- HERO (carousel) minimalist ----- */
-    .hero {
-      height: 90vh;
-      min-height: 600px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-swiper {
-      width: 100%;
-      height: 100%;
-    }
-    .hero-swiper .swiper-slide {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    /* ----- HERO (modern cursive titles) ----- */
+    .hero { height: 90vh; min-height: 600px; position: relative; overflow: hidden; }
+    .hero-swiper { width: 100%; height: 100%; }
+    .hero-swiper .swiper-slide { position: relative; display: flex; align-items: center; justify-content: center; }
     .hero-swiper .slide-bg {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-size: cover;
-      background-position: center;
-      z-index: 0;
+      position: absolute; top:0; left:0; width:100%; height:100%;
+      background-size: cover; background-position: center; z-index:0;
       transition: transform 0.4s ease;
     }
-    .hero-swiper .swiper-slide:hover .slide-bg {
-      transform: scale(1.02);
-    }
+    .hero-swiper .swiper-slide:hover .slide-bg { transform: scale(1.02); }
     .hero-swiper .slide-content {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      color: white;
-      max-width: 800px;
-      padding: 1.5rem 2rem;
-      background: var(--hero-overlay);
-      backdrop-filter: blur(3px);
-      border-radius: 32px;
-      border: 1px solid rgba(255,255,255,0.15);
+      position: relative; z-index:10; text-align: center; color: white; max-width:800px;
+      padding: 1.5rem 2rem; background: var(--hero-overlay); backdrop-filter: blur(3px);
+      border-radius: 32px; border: 1px solid rgba(255,255,255,0.15);
       transition: background 0.3s ease, backdrop-filter 0.3s ease;
     }
-    .hero-swiper .swiper-slide:hover .slide-content {
-      background: var(--hero-overlay-hover);
-      backdrop-filter: blur(5px);
-    }
+    .hero-swiper .swiper-slide:hover .slide-content { background: var(--hero-overlay-hover); backdrop-filter: blur(5px); }
+    
+    /* modern cursive for hero titles – minimalist, elegant */
     .hero-swiper .slide-content h1 {
-      font-size: 4rem;
-      font-weight: 450;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin-bottom: 0.3rem;
+      font-family: 'Dancing Script', cursive;
+      font-size: 4.2rem;
+      font-weight: 500;
+      letter-spacing: -0.005em;
+      line-height: 1.1;
       color: white;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
     .hero-swiper .slide-content p {
       font-size: 1.3rem;
       font-weight: 300;
-      opacity: 0.9;
+      opacity: 0.95;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.3px;
+      margin-top: 0.5rem;
     }
-    .hero .swiper-button-next,
-    .hero .swiper-button-prev {
-      color: white;
-      background: rgba(255,255,255,0.15);
-      width: 50px; height: 50px;
-      border-radius: 50%;
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255,255,255,0.2);
-      transition: 0.2s;
-    }
-    .hero .swiper-button-next:hover,
-    .hero .swiper-button-prev:hover {
-      background: rgba(255,255,255,0.3);
-      transform: scale(1.05);
-    }
-    .hero .swiper-button-next:after,
-    .hero .swiper-button-prev:after { font-size: 1.3rem; }
-    .hero .swiper-pagination-bullet { background: white; opacity: 0.6; }
-    .hero .swiper-pagination-bullet-active { opacity: 1; background: white; }
 
-    /* sections minimalist */
-    .section {
-      padding: 80px 0;
-      transition: background-color 0.3s ease;
+    .hero .swiper-button-next, .hero .swiper-button-prev {
+      color:white; background:rgba(255,255,255,0.15); width:50px; height:50px; border-radius:50%;
+      backdrop-filter:blur(4px); border:1px solid rgba(255,255,255,0.2); transition:0.2s;
     }
+    .hero .swiper-button-next:hover, .hero .swiper-button-prev:hover { background:rgba(255,255,255,0.3); transform:scale(1.05); }
+    .hero .swiper-button-next:after, .hero .swiper-button-prev:after { font-size:1.3rem; }
+    .hero .swiper-pagination-bullet { background:white; opacity:0.6; }
+    .hero .swiper-pagination-bullet-active { opacity:1; }
+
+    /* section spacing */
+    .section { padding: 80px 0; transition: background-color 0.3s ease; }
+
+    /* section title (as requested) */
     .section-title {
       text-align: center;
       font-size: 2.2rem;
@@ -285,231 +200,152 @@
       transition: background 0.2s ease;
     }
 
-    /* blog card grid (minimalist) + hover animations */
-    .blog-grid {
+    /* gallery grid (images only) */
+    .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
+      gap: 28px;
     }
-    .blog-card {
+    .gallery-item {
       background: var(--surface);
       border-radius: 20px;
       overflow: hidden;
-      transition: transform 0.25s ease, box-shadow 0.3s ease, background-color 0.3s ease;
       box-shadow: var(--card-shadow);
       border: 1px solid var(--border-light);
+      transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
+      aspect-ratio: 1 / 1.2;
     }
-    .blog-card:hover {
-      transform: translateY(-6px);
+    .gallery-item:hover {
+      transform: translateY(-5px);
       box-shadow: var(--hover-shadow);
     }
-    .blog-card img {
+    .gallery-item img {
       width: 100%;
-      height: 240px;
+      height: 100%;
       object-fit: cover;
       display: block;
       transition: transform 0.4s ease;
     }
-    .blog-card:hover img {
-      transform: scale(1.02);
-    }
-    .blog-content {
-      padding: 22px 18px 26px;
-    }
-    .blog-content h3 {
-      font-size: 1.6rem;
-      font-weight: 500;
-      margin-bottom: 6px;
-      color: var(--text-primary);
-      letter-spacing: -0.01em;
-    }
-    .blog-content .meta {
-      font-size: 0.8rem;
-      color: var(--text-soft);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 12px;
-    }
-    .blog-content p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      margin-bottom: 18px;
-      font-weight: 350;
-    }
-    .blog-content .read-link {
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.9rem;
-      color: var(--accent);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .blog-content .read-link:hover {
-      border-bottom-color: var(--accent);
-      color: var(--accent);
-    }
+    .gallery-item:hover img { transform: scale(1.02); }
 
-    /* memories carousel (swiper) minimal + hover */
+    /* memories carousel — full view photo */
     .memories-carousel {
       background: var(--footer-bg);
       border-radius: 60px 60px 0 0;
       padding: 70px 0 90px;
       transition: background 0.3s ease;
     }
+    /* carousel inner title (added per request) */
+    .memories-carousel .section-title {
+      margin-bottom: 2rem;
+    }
+    .memories-carousel .section-title::after {
+      width: 40px; /* slightly smaller for these subtitles */
+    }
+
     .memories-swiper {
       width: 100%;
       padding: 20px 0 60px;
     }
     .memories-swiper .swiper-slide {
-      background: var(--surface);
+      background: transparent;
       border-radius: 24px;
       overflow: hidden;
       box-shadow: var(--card-shadow);
       border: 1px solid var(--border-light);
-      max-width: 340px;
-      transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
+      max-width: 420px;
+      height: auto;
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
     }
     .memories-swiper .swiper-slide:hover {
       transform: translateY(-6px) scale(1.01);
       box-shadow: var(--hover-shadow);
     }
     .memories-swiper .swiper-slide img {
-      width: 100%; height: 240px; object-fit: cover;
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
       transition: transform 0.4s ease;
     }
-    .memories-swiper .swiper-slide:hover img {
-      transform: scale(1.02);
-    }
-    .slide-caption {
-      padding: 20px 18px 24px;
-    }
-    .slide-caption h3 { font-size: 1.4rem; font-weight: 500; margin-bottom: 4px; color: var(--text-primary); }
-    .slide-caption p { color: var(--text-soft); font-size: 0.9rem; }
+    .memories-swiper .swiper-slide:hover img { transform: scale(1.02); }
 
-    /* parallax minimal (subtle hover on overlay) */
+    /* parallax minimal */
     .parallax {
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 460px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      isolation: isolate;
-      border-top: 1px solid var(--border-light);
-      border-bottom: 1px solid var(--border-light);
+      background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;
+      height: 460px; display: flex; align-items: center; justify-content: center;
+      position: relative; isolation: isolate;
+      border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);
+      font-family: 'Dancing Script', cursive;
     }
     .parallax::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: var(--parallax-overlay);
-      backdrop-filter: blur(2px);
-      z-index: 1;
+      content:''; position:absolute; inset:0;
+      background: var(--parallax-overlay); backdrop-filter: blur(2px); z-index:1;
       transition: backdrop-filter 0.3s ease, background 0.3s ease;
     }
-    .parallax:hover::before {
-      backdrop-filter: blur(4px);
-      background: var(--parallax-overlay-hover);
-    }
-    .parallax-content {
-      position: relative; z-index: 2;
-      text-align: center; color: white;
-      padding: 2rem;
-    }
-    .parallax-content h2 { font-size: 3.2rem; font-weight: 400; letter-spacing: -0.02em; }
-    .parallax-content p { font-size: 1.2rem; font-weight: 300; opacity: 0.9; }
+    .parallax:hover::before { backdrop-filter: blur(4px); background: var(--parallax-overlay-hover); }
+    .parallax-content { position:relative; z-index:2; text-align:center; color:white; padding:2rem; }
+    .parallax-content h2 { font-size:3.2rem; font-weight:400; letter-spacing:-0.02em; }
+    .parallax-content p { font-size:1.2rem; font-weight:300; opacity:0.9; }
 
-    /* video grid (blog style) + hover */
+    /* video grid */
     .video-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
-      margin-top: 30px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; margin-top:30px;
     }
     .video-card {
-      background: var(--surface);
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid var(--border-light);
-      transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
+      background: var(--surface); border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--border-light); transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
     }
-    .video-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--hover-shadow);
-    }
+    .video-card:hover { transform: translateY(-6px); box-shadow: var(--hover-shadow); }
     .video-card video {
       width: 100%; height: 200px; object-fit: cover; background: #1e1a2b;
       transition: transform 0.4s ease;
     }
-    .video-card:hover video {
-      transform: scale(1.02);
-    }
+    .video-card:hover video { transform: scale(1.02); }
     .video-card-content { padding: 20px 18px 24px; }
     .video-card h3 { font-size: 1.4rem; font-weight: 500; margin-bottom: 6px; color: var(--text-primary); }
     .video-card p { color: var(--text-secondary); font-size: 0.9rem; font-weight: 350; }
 
-    /* footer with social media */
-    footer {
-      background: var(--footer-bg);
-      color: var(--text-secondary);
-      padding: 50px 0 30px;
-      text-align: center;
-      border-top: 1px solid var(--border-strong);
-      transition: background 0.3s ease, border-color 0.2s ease;
+    /* music player mini */
+    .music-control {
+      position: fixed; bottom: 30px; right: 30px; z-index: 100;
+      background: var(--surface); border: 1px solid var(--border-light);
+      border-radius: 60px; padding: 8px 16px 8px 12px; box-shadow: var(--card-shadow);
+      backdrop-filter: blur(8px); display: flex; align-items: center; gap: 12px;
     }
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 28px;
-      margin-bottom: 28px;
+    .music-control button {
+      background: var(--accent-light); border: none; border-radius: 50%;
+      width: 40px; height: 40px; font-size: 1.2rem; color: var(--bg);
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      transition: 0.2s;
     }
-    .social-links a {
-      color: var(--icon-color);
-      font-size: 1.6rem;
-      transition: color 0.2s, transform 0.2s;
-    }
-    .social-links a:hover {
-      color: var(--icon-hover);
-      transform: scale(1.15) translateY(-2px);
-    }
-    footer p {
-      font-size: 0.95rem;
-      color: var(--text-soft);
-    }
-    footer p:first-of-type {
-      font-weight: 450;
-      color: var(--text-primary);
-    }
+    .music-control button:hover { background: var(--accent); transform: scale(1.05); }
+    .music-control span { font-size: 0.85rem; color: var(--text-secondary); font-weight: 400; }
 
-    /* responsive adjustments for bigger logo span and toggle */
-    @media (max-width: 1024px) {
-      .blog-grid { grid-template-columns: repeat(2, 1fr); }
-      .hero-swiper .slide-content h1 { font-size: 3.2rem; }
-      .logo span { font-size: 2.2rem; }
+    /* footer */
+    footer {
+      background: var(--footer-bg); color: var(--text-secondary); padding: 50px 0 30px;
+      text-align: center; border-top: 1px solid var(--border-strong); transition: background 0.3s ease, border-color 0.2s ease;
     }
+    .social-links { display: flex; justify-content: center; gap: 28px; margin-bottom: 28px; }
+    .social-links a { color: var(--icon-color); font-size: 1.6rem; transition: color 0.2s, transform 0.2s; }
+    .social-links a:hover { color: var(--icon-hover); transform: scale(1.15) translateY(-2px); }
+    footer p { font-size: 0.95rem; color: var(--text-soft); }
+    footer p:first-of-type { font-weight: 450; color: var(--text-primary); }
+
+    /* responsive */
+    @media (max-width: 1024px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } .hero-swiper .slide-content h1 { font-size:3.5rem; } .logo span { font-size:2.2rem; } }
     @media (max-width: 768px) {
-      .blog-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .logo { margin: 0 auto; justify-content: center; width: 100%; gap: 10px; }
-      .logo span { font-size: 2.0rem; }
-      .theme-toggle { margin-left: 0; position: absolute; right: 24px; top: 14px; }
-      .hero { height: 70vh; min-height: 500px; }
-      .hero-swiper .slide-content h1 { font-size: 2.6rem; }
-      .hero-swiper .slide-content p { font-size: 1.1rem; }
-      .parallax-content h2 { font-size: 2.5rem; }
-      .section { padding: 60px 0; }
+      .gallery-grid { grid-template-columns: 1fr; } .nav-links { display:none; } .logo { margin:0 auto; justify-content:center; width:100%; gap:10px; }
+      .logo span { font-size:2rem; } .theme-toggle { margin-left:0; position:absolute; right:24px; top:14px; } .hero { height:70vh; min-height:500px; }
+      .hero-swiper .slide-content h1 { font-size:2.8rem; } .hero-swiper .slide-content p { font-size:1.1rem; } .parallax-content h2 { font-size:2.5rem; }
+      .section { padding:60px 0; } .memories-swiper .swiper-slide img { height: 260px; }
     }
     @media (max-width: 480px) {
-      .hero-swiper .slide-content { padding: 1.2rem; border-radius: 24px; }
-      .hero-swiper .slide-content h1 { font-size: 2.2rem; }
-      .blog-content { padding: 18px; }
-      .blog-card img { height: 200px; }
-      .parallax { height: 360px; background-attachment: scroll; }
-      .social-links { gap: 22px; }
-      .social-links a { font-size: 1.4rem; }
-      .logo span { font-size: 1.8rem; }
+      .hero-swiper .slide-content { padding:1.2rem; border-radius:24px; } .hero-swiper .slide-content h1 { font-size:2.4rem; }
+      .parallax { height:360px; background-attachment:scroll; } .social-links { gap:22px; } .social-links a { font-size:1.4rem; } .logo span { font-size:1.8rem; }
+      .memories-swiper .swiper-slide img { height: 220px; } .music-control { bottom: 20px; right: 20px; padding: 4px 12px; }
+      .gallery-item { aspect-ratio: 1 / 1.1; }
     }
   </style>
 </head>
@@ -521,164 +357,102 @@
         <span>KIM & KURT</span>
       </div>
       <div class="nav-links">
-        <a href="#">home</a>
-        <a href="#">stories</a>
-        <a href="#">gallery</a>
-        <a href="#">about</a>
+        <a href="#">home</a> <a href="#">stories</a> <a href="#">gallery</a> <a href="#">about</a>
       </div>
-      <!-- DARK/LIGHT MODE TOGGLE (minimal & elegant) -->
       <div class="theme-toggle">
-        <button id="theme-toggle-btn" aria-label="Switch between dark and light mode">
-          <i id="theme-icon" class="fas fa-moon"></i> <!-- moon = dark mode indicator (default light) -->
-        </button>
+        <button id="theme-toggle-btn" aria-label="Switch theme"><i id="theme-icon" class="fas fa-moon"></i></button>
       </div>
     </div>
   </nav>
 
   <main>
-    <!-- HERO (animated) -->
+    <!-- HERO carousel (modern cursive titles) -->
     <section class="hero" data-aos="fade" data-aos-duration="1000">
       <div class="swiper hero-swiper">
-        <div class="swiper-wrapper" id="hero-swiper-wrapper">
-          <!-- JS fills here -->
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+        <div class="swiper-wrapper" id="hero-swiper-wrapper"></div>
+        <div class="swiper-button-next"></div> <div class="swiper-button-prev"></div>
         <div class="swiper-pagination"></div>
       </div>
     </section>
 
-    <!-- BLOG SECTION 1: Encantadia date (blog cards) -->
+    <!-- GALLERY with SECTION TITLE (encantadia · Lunch Date) -->
     <section class="section">
       <div class="container">
-        <h2 class="section-title" data-aos="fade-up"><span>encantadia</span> · Lunch Date</h2>
-        <div class="blog-grid">
-          <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
-            <img src="Me & Kimtots/encan1.jpg" alt="enchanted falls">
-            <div class="blog-content">
-              <h3>KIM & KURT</h3>
-              <div class="meta">Feb 13 · 3 min read</div>
-              <p>Inlove with You.</p>
-              <a href="#" class="read-link">read story →</a>
-            </div>
-          </article>
-          <article class="blog-card" data-aos="fade-up" data-aos-delay="150">
-            <img src="Me & Kimtots/encan3.jpg" alt="hidden fall">
-            <div class="blog-content">
-              <h3>KIM & KURT</h3>
-              <div class="meta">Feb 13 · 2 min read</div>
-              <p>Date With you</p>
-              <a href="#" class="read-link">read story →</a>
-            </div>
-          </article>
-          <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
-            <img src="Me & Kimtots/encan4.jpg" alt="electric nights">
-            <div class="blog-content">
-              <h3>KIM & KURT</h3>
-              <div class="meta">Feb 13 · 4 min read</div>
-              <p>Eat with you.</p>
-              <a href="#" class="read-link">read story →</a>
-            </div>
-          </article>
+        <h2 class="section-title" data-aos="fade-up"><span>Encantadia & Winter WonderLand</span> ·  Date</h2>
+        <div class="gallery-grid" data-aos="fade-up">
+          <!-- gallery images only, no titles -->
+          <div class="gallery-item"><img src="Me & Kimtots/encan1.jpg" alt="encantadia1" loading="lazy"></div>
+          <div class="gallery-item"><img src="Me & Kimtots/encan3.jpg" alt="encantadia2" loading="lazy"></div>
+          <div class="gallery-item"><img src="Me & Kimtots/encan4.jpg" alt="encantadia3" loading="lazy"></div>
+          <div class="gallery-item"><img src="Me & Kimtots/out1.jpg" alt="winter1" loading="lazy"></div>
+          <div class="gallery-item"><img src="Me & Kimtots/out2.jpg" alt="winter2" loading="lazy"></div>
+          
         </div>
       </div>
     </section>
 
-    <!-- BLOG SECTION 2: WinterWonderLand -->
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title" data-aos="fade-up"><span>winter wonderland</span> · Gala</h2>
-        <div class="blog-grid">
-          <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
-            <img src="Me & Kimtots/out1.jpg" alt="frosty kiss">
-            <div class="blog-content">
-              <h3>frosty kiss</h3>
-              <div class="meta">Feb 13 · 3 min read</div>
-              <p>First snow of the season. Your nose was pink, but your smile warmer than cocoa.</p>
-              <a href="#" class="read-link">read story →</a>
-            </div>
-          </article>
-          <article class="blog-card" data-aos="fade-up" data-aos-delay="150">
-            <img src="Me & Kimtots/out2.jpg" alt="snowy hug">
-            <div class="blog-content">
-              <h3>snowy hug</h3>
-              <div class="meta">Feb 13 · 2 min read</div>
-              <p>We built a tiny snowman and named it after us. It melted, but we won't.</p>
-              <a href="#" class="read-link">read story →</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- MEMORIES CAROUSEL (snapshots) -->
+    <!-- MEMORIES CAROUSEL 1 with section title "Mirror · Today" -->
     <section class="section memories-carousel" data-aos="fade-up">
       <div class="container">
-        <h2 class="section-title"><span>Bonding with you</span> · snapshots</h2>
-        <div class="swiper memories-swiper" data-aos="zoom-in" data-aos-duration="600">
+        <!-- added title for this carousel section (only one per section) -->
+        <h2 class="section-title" data-aos="fade-up">Selfie · with Yayab </h2>
+        <div class="swiper memories-swiper" data-aos="zoom-in">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="Me & Kimtots/mirror1.jpg" alt="mirror1"><div class="slide-caption"></div></div>
-            <div class="swiper-slide"><img src="Me & Kimtots/mirror2.jpg" alt="mirror2"><div class="slide-caption"></div></div>
-            <div class="swiper-slide"><img src="Me & Kimtots/mirror3.jpg" alt="mirror3"><div class="slide-caption"></div></div>
-            <div class="swiper-slide"><img src="Me & Kimtots/1.jpg" alt="memory1"><div class="slide-caption"></div></div>
-            <div class="swiper-slide"><img src="Me & Kimtots/2.jpg" alt="memory2"><div class="slide-caption"></div></div>
-            <div class="swiper-slide"><img src="Me & Kimtots/today1 (1).jpg" alt="memory2"><div class="slide-caption"></div></div>
-            <div class="swiper-slide"><img src="Me & Kimtots/today1 (2).jpg" alt="memory2"><div class="slide-caption"></div></div>
-            <div class="swiper-slide"><img src="Me & Kimtots/today1 (3).jpg" alt="memory2"><div class="slide-caption"></div></div>
-            <div class="swiper-slide"><img src="Me & Kimtots/today1 (4).jpg" alt="memory2"><div class="slide-caption"></div></div>
-            <div class="swiper-slide"><img src="Me & Kimtots/today1 (5).jpg" alt="memory2"><div class="slide-caption"></div></div>
-            <div class="swiper-slide"><img src="Me & Kimtots/today1 (6).jpg" alt="memory2"><div class="slide-caption"></div></div>
-            <div class="swiper-slide"><img src="Me & Kimtots/today1 (7).jpg" alt="memory2"><div class="slide-caption"></div></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/mirror1.jpg" alt="mirror1"></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/mirror2.jpg" alt="mirror2"></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/mirror3.jpg" alt="mirror3"></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/1.jpg" alt="memory1"></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/2.jpg" alt="memory2"></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/today1%20(1).jpg" alt="today1"></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/today1%20(2).jpg" alt="today2"></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/today1%20(3).jpg" alt="today3"></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/today1%20(4).jpg" alt="today4"></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/today1%20(5).jpg" alt="today5"></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/today1%20(6).jpg" alt="today6"></div>
+            <div class="swiper-slide"><img src="Me & Kimtots/today1%20(7).jpg" alt="today7"></div>
           </div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div> <div class="swiper-button-prev"></div>
           <div class="swiper-pagination"></div>
         </div>
       </div>
     </section>
 
-    <!-- MEMORIES CAROUSEL (First Date) -->
+    <!-- MEMORIES CAROUSEL 2 with section title "First Date" -->
     <section class="section memories-carousel" data-aos="fade-up">
       <div class="container">
-        <h2 class="section-title"><span>First Date</span> · snapshots</h2>
-        <div class="swiper memories-swiper" data-aos="zoom-in" data-aos-duration="600">
+        <!-- added title for this carousel section -->
+        <h2 class="section-title" data-aos="fade-up">First Date</h2>
+        <div class="swiper memories-swiper" data-aos="zoom-in">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="first meet/1.png" alt="mirror1"><div class="slide-caption"></div></div>
-            <div class="swiper-slide"><img src="first meet/Screenshot 2026-02-24 201501.png" alt="mirror2"><div class="slide-caption"></div></div>
-            <div class="swiper-slide"><img src="first meet/Screenshot 2026-02-24 201508.png" alt="mirror3"><div class="slide-caption"></div></div>
-            <div class="swiper-slide"><img src="first meet/Screenshot 2026-02-24 201515.png" alt="memory1"><div class="slide-caption"></div></div>
-            <div class="swiper-slide"><img src="first meet/Screenshot 2026-02-24 201521.png" alt="memory2"><div class="slide-caption"></div></div>
-            <div class="swiper-slide"><img src="first meet/Screenshot 2026-02-24 201526.png" alt="memory2"><div class="slide-caption"></div></div>
-            <div class="swiper-slide"><img src="first meet/Screenshot 2026-02-24 201533.png" alt="memory2"><div class="slide-caption"></div></div>
-            <div class="swiper-slide"><img src="first meet/Screenshot 2026-02-24 201539.png" alt="memory2"><div class="slide-caption"></div></div>
+            <div class="swiper-slide"><img src="first meet/1.png" alt="first1"></div>
+            <div class="swiper-slide"><img src="first meet/Screenshot%202026-02-24%20201501.png" alt="first2"></div>
+            <div class="swiper-slide"><img src="first meet/Screenshot%202026-02-24%20201508.png" alt="first3"></div>
+            <div class="swiper-slide"><img src="first meet/Screenshot%202026-02-24%20201515.png" alt="first4"></div>
+            <div class="swiper-slide"><img src="first meet/Screenshot%202026-02-24%20201521.png" alt="first5"></div>
+            <div class="swiper-slide"><img src="first meet/Screenshot%202026-02-24%20201526.png" alt="first6"></div>
+            <div class="swiper-slide"><img src="first meet/Screenshot%202026-02-24%20201533.png" alt="first7"></div>
+            <div class="swiper-slide"><img src="first meet/Screenshot%202026-02-24%20201539.png" alt="first8"></div>
           </div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div> <div class="swiper-button-prev"></div>
           <div class="swiper-pagination"></div>
         </div>
       </div>
     </section>
 
-    <!-- PARALLAX (minimal) -->
+    <!-- PARALLAX -->
     <section class="parallax" style="background-image: url('Me & Kimtots/logo2.png');" data-aos="fade" data-aos-duration="1200">
-      <div class="parallax-content">
-        <h2>our story</h2>
-        <p>My Forever</p>
-      </div>
+      <div class="parallax-content"><h2>Kim & Kurt</h2><p>My YabYab</p></div>
     </section>
 
-    <!-- VIDEO MEMORIES (blog style) -->
+    <!-- VIDEO MEMORIES -->
     <section class="section">
       <div class="container">
         <h2 class="section-title" data-aos="fade-up"><span>video</span> memories</h2>
-        <div class="video-grid" id="video-grid-container" data-aos="fade-up" data-aos-delay="100">
-          <!-- videos injected by JS -->
-        </div>
+        <div class="video-grid" id="video-grid-container" data-aos="fade-up" data-aos-delay="100"></div>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer data-aos="fade-up" data-aos-offset="50">
     <div class="container">
       <div class="social-links">
@@ -693,15 +467,25 @@
     </div>
   </footer>
 
+  <!-- MINI MUSIC PLAYER -->
+  <div class="music-control" id="musicControl">
+    <button id="musicToggleBtn"><i class="fas fa-play"></i></button>
+    <span id="musicStatus">background</span>
+    <audio id="bgMusic" loop preload="auto" crossorigin="anonymous">
+      <source src="Pipiliin ka Araw-araw by elpaso.mp3" type="audio/mpeg">
+      Your browser does not support audio.
+    </audio>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     (function() {
-      // ---------- HERO images ----------
+      // --- hero images (clean urls) ---
       const heroImages = [
-        { url: 'Me & Kimtots/0703.png ', title: 'Me & Kimtots', subtitle: 'I Love you so Much' },
-        { url: 'Me & Kimtots/1-0703.png ', title: 'moments like these', subtitle: 'I Love you Forever' },
-        { url: 'Me & Kimtots/2-0703.png ', title: 'Date with you', subtitle: 'I Love you so Much' },
+        { url: 'Me & Kimtots/03-15.jpg', title: 'Kim & Kurt', subtitle: '' },
+        { url: 'Me & Kimtots/0703.png', title: 'Kim & Kurt', subtitle: '' },
+        { url: 'Me & Kimtots/1-0703.png', title: 'Kim & Kurt', subtitle: '' },
         
       ];
       const wrapper = document.getElementById('hero-swiper-wrapper');
@@ -711,54 +495,38 @@
           slide.className = 'swiper-slide';
           slide.innerHTML = `
             <div class="slide-bg" style="background-image: url('${img.url}');"></div>
-            <div class="slide-content">
-              <h1>${img.title}</h1>
-              <p>${img.subtitle}</p>
-            </div>
+            <div class="slide-content"><h1>${img.title}</h1><p>${img.subtitle}</p></div>
           `;
           wrapper.appendChild(slide);
         });
       }
 
-      // ---------- Swiper: hero ----------
+      // --- Swiper hero ---
       const heroSwiperEl = document.querySelector('.hero-swiper');
       if (heroSwiperEl) {
         new Swiper(heroSwiperEl, {
-          loop: true,
-          speed: 700,
-          autoplay: { delay: 5000, disableOnInteraction: false },
+          loop: true, speed: 700, autoplay: { delay: 5000, disableOnInteraction: false },
           navigation: { nextEl: '.hero .swiper-button-next', prevEl: '.hero .swiper-button-prev' },
           pagination: { el: '.hero .swiper-pagination', clickable: true },
-          on: {
-            slideChangeTransitionStart: () => heroSwiperEl.classList.add('blur-transition'),
-            slideChangeTransitionEnd: () => heroSwiperEl.classList.remove('blur-transition')
-          }
         });
       }
 
-      // ---------- Swiper: memories carousel (apply to all .memories-swiper) ----------
+      // --- memories swipers (full view, no captions) ---
       document.querySelectorAll('.memories-swiper').forEach((el) => {
         new Swiper(el, {
-          loop: true,
-          slidesPerView: 1,
-          spaceBetween: 20,
-          centeredSlides: true,
+          loop: true, slidesPerView: 1, spaceBetween: 20, centeredSlides: true,
           pagination: { el: el.querySelector('.swiper-pagination'), clickable: true, dynamicBullets: true },
           navigation: { nextEl: el.querySelector('.swiper-button-next'), prevEl: el.querySelector('.swiper-button-prev') },
-          breakpoints: { 
-            640: { slidesPerView: 2, spaceBetween: 25 },
-            1024: { slidesPerView: 3, spaceBetween: 30 } 
-          },
-          autoplay: { delay: 4000, disableOnInteraction: false },
-          speed: 800,
+          breakpoints: { 640: { slidesPerView: 2, spaceBetween: 25 }, 1024: { slidesPerView: 3, spaceBetween: 30 } },
+          autoplay: { delay: 4000, disableOnInteraction: false }, speed: 800,
         });
       });
 
-      // ---------- VIDEO MEMORIES ----------
+      // --- video memories (autoplay muted loop playsinline) ---
       const videoMemories = [
-        { src: 'Me & Kimtots/video1.mp4 ', poster: 'Me & Kimtots/1-0703.png ', title: 'Eat Bonding', description: 'TimeLapsed' },
-        { src: 'Me & Kimtots/video2.mp4 ', poster: 'Me & Kimtots/2-0703.png ', title: 'Lunch Date', description: 'With You' },
-        { src: 'Me & Kimtots/video3.mp4 ', poster: 'Me & Kimtots/0703.png ', title: 'forever kiss', description: 'can’t stop watching' }
+        { src: 'Me & Kimtots/video1.mp4', poster: 'Me & Kimtots/1-0703.png', title: 'Eat Bonding', description: 'TimeLapsed' },
+        { src: 'Me & Kimtots/video2.mp4', poster: 'Me & Kimtots/2-0703.png', title: 'Lunch Date', description: 'With You' },
+        { src: 'Me & Kimtots/video3.mp4', poster: 'Me & Kimtots/0703.png', title: 'forever kiss', description: 'can’t stop watching' }
       ];
       const videoGrid = document.getElementById('video-grid-container');
       if (videoGrid) {
@@ -766,58 +534,82 @@
           const card = document.createElement('div');
           card.className = 'video-card';
           card.innerHTML = `
-            <video controls preload="metadata" poster="${v.poster || ''}" playsinline webkit-playsinline>
+            <video controls autoplay muted loop playsinline preload="auto" poster="${v.poster}">
               <source src="${v.src}" type="video/mp4">
             </video>
-            <div class="video-card-content">
-              <h3>${v.title}</h3>
-              <p>${v.description}</p>
-            </div>
+            <div class="video-card-content"><h3>${v.title}</h3><p>${v.description}</p></div>
           `;
           videoGrid.appendChild(card);
         });
       }
 
-      // ---------- THEME TOGGLE (Dark/Light mode) ----------
+      // --- dark/light toggle ---
       const toggleBtn = document.getElementById('theme-toggle-btn');
       const themeIcon = document.getElementById('theme-icon');
-      
-      // Check localStorage for saved theme
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
       } else {
-        // light default
         themeIcon.classList.add('fa-moon');
       }
-
       toggleBtn.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
-        
-        // update icon
         if (isDark) {
-          themeIcon.classList.remove('fa-moon');
-          themeIcon.classList.add('fa-sun');
+          themeIcon.classList.replace('fa-moon', 'fa-sun');
           localStorage.setItem('theme', 'dark');
         } else {
-          themeIcon.classList.remove('fa-sun');
-          themeIcon.classList.add('fa-moon');
+          themeIcon.classList.replace('fa-sun', 'fa-moon');
           localStorage.setItem('theme', 'light');
         }
       });
 
-      // ---------- AOS initialization ----------
-      AOS.init({
-        duration: 800,
-        once: true,
-        offset: 60,
-        easing: 'ease-out-cubic'
+      // --- background music control ---
+      const audio = document.getElementById('bgMusic');
+      const musicBtn = document.getElementById('musicToggleBtn');
+      const musicStatus = document.getElementById('musicStatus');
+      let musicPlaying = false;
+
+      audio.volume = 0.3;
+      const playMusic = () => {
+        audio.play().then(() => {
+          musicPlaying = true;
+          musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+          musicStatus.innerText = 'now playing';
+        }).catch(() => {
+          musicPlaying = false;
+          musicBtn.innerHTML = '<i class="fas fa-play"></i>';
+          musicStatus.innerText = 'click to play';
+        });
+      };
+      const pauseMusic = () => {
+        audio.pause();
+        musicPlaying = false;
+        musicBtn.innerHTML = '<i class="fas fa-play"></i>';
+        musicStatus.innerText = 'paused';
+      };
+
+      musicBtn.addEventListener('click', () => {
+        if (musicPlaying) { pauseMusic(); }
+        else { playMusic(); }
       });
+
+      // attempt autoplay on first interaction
+      document.addEventListener('click', function initAudio() {
+        if (!musicPlaying) {
+          audio.play().then(() => {
+            musicPlaying = true;
+            musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            musicStatus.innerText = 'now playing';
+          }).catch(() => {});
+        }
+        document.removeEventListener('click', initAudio);
+      }, { once: true });
+
+      // --- AOS init ---
+      AOS.init({ duration: 800, once: true, offset: 60, easing: 'ease-out-cubic' });
     })();
   </script>
-  <!-- DESIGN: Modern minimalist with dark/light toggle, all colors adapt elegantly -->
 </body>
 </html>
