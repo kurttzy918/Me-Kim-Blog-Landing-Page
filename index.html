@@ -529,31 +529,77 @@
     ======================== */
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(clamp(240px, 40vw, 300px), 1fr));
-      gap: clamp(16px, 3vw, 32px);
-      margin-top: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 28vw, 280px), 1fr));
+      gap: clamp(20px, 3vw, 36px);
+      margin-top: 40px;
+      justify-content: center;
     }
     .video-card {
       background: var(--surface);
-      border-radius: clamp(12px, 2vw, 20px);
+      border-radius: clamp(16px, 2.5vw, 24px);
       overflow: hidden;
       border: 1px solid var(--border-light);
       box-shadow: var(--card-shadow);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease;
+      position: relative;
     }
-    .video-card:hover { transform: translateY(-5px); box-shadow: var(--hover-shadow); }
-    .video-card video {
-      width: 100%; height: clamp(160px, 25vw, 210px);
-      object-fit: cover; background: #140d11; display: block;
+    .video-card::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: calc(clamp(16px, 2.5vw, 24px) + 2px);
+      background: linear-gradient(135deg, var(--accent), var(--accent2), transparent);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      z-index: -1;
     }
-    .video-card-info { padding: clamp(14px, 2vw, 20px) clamp(14px, 2vw, 18px); }
+    .video-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: var(--hover-shadow); }
+    .video-card:hover::before { opacity: 1; }
+
+    /* YouTube Shorts vertical iframe wrapper */
+    .video-iframe-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      background: #0d0d0d;
+      overflow: hidden;
+    }
+    .video-iframe-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .video-card-info {
+      padding: clamp(14px, 2vw, 20px) clamp(14px, 2vw, 18px);
+      background: var(--surface);
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
     .video-card-info h3 {
       font-family: 'Sharpie', cursive;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       color: var(--text-primary);
-      margin-bottom: 4px;
+      margin-bottom: 0;
     }
-    .video-card-info p { font-size: 0.88rem; color: var(--text-soft); }
+    .video-card-info p {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      font-family: 'Jost', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .video-card-info p::before {
+      content: '▶';
+      font-size: 0.6rem;
+      color: var(--accent);
+    }
 
     /* ========================
        TIMELINE (year sections)
@@ -1103,7 +1149,7 @@
           <span class="section-badge">videos</span>
           <h2 class="section-title">Video <em>Memories</em> 2026</h2>
         </div>
-        <div class="video-grid" id="video-grid-container" data-aos="fade-up" data-aos-delay="100"></div>
+        <div class="video-grid" id="video-grid-container-2026" data-aos="fade-up" data-aos-delay="100"></div>
       </div>
     </section>
 <!-- CINEMATIC COUPLE REELS -->
@@ -1111,15 +1157,31 @@
   <div class="container">
     <div style="text-align:center;" data-aos="fade-up">
       <span class="section-badge">special reels</span>
-      <h2 class="section-title">Mukbang <em>Moments</em></h2>
+      <h2 class="section-title">Kulitan <em>Moments</em></h2>
     </div>
 
     <div class="video-grid" data-aos="fade-up" data-aos-delay="100">
 
       <div class="video-card">
-        <video controls autoplay muted loop playsinline preload="auto" poster="Me & Kimtots/3-0703.png">
-          <source src="video1.mp4" type="video/mp4">
-        </video>
+  <div class="video-iframe-wrap">
+    <iframe 
+      src="https://www.youtube.com/embed/TzHYl8QdLXo?autoplay=1&mute=1&loop=1&playlist=TzHYl8QdLXo&controls=1&playsinline=1" 
+      allow="autoplay; encrypted-media" 
+      allowfullscreen 
+      loading="lazy">
+    </iframe>
+  </div>
+
+  <div class="video-card-info">
+    <h3>Mukbang Clips</h3>
+    <p>Kim & Kurt</p>
+  </div>
+</div>
+
+      <div class="video-card">
+        <div class="video-iframe-wrap">
+          <iframe src="https://www.youtube.com/embed/XGq2AdRbAes?autoplay=1&mute=1&loop=1&playlist=XGq2AdRbAes&controls=1&playsinline=1&start=5" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+        </div>
         <div class="video-card-info">
           <h3>Mukbang Clips</h3>
           <p>Kim & Kurt</p>
@@ -1127,9 +1189,9 @@
       </div>
 
       <div class="video-card">
-        <video controls autoplay muted loop playsinline preload="auto" poster="Me & Kimtots/4-0703.png">
-          <source src="video4.mp4" type="video/mp4">
-        </video>
+        <div class="video-iframe-wrap">
+          <iframe src="https://www.youtube.com/embed/p1uV8Ku46IU?autoplay=1&mute=1&loop=1&playlist=p1uV8Ku46IU&controls=1&playsinline=1&start=10" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+        </div>
         <div class="video-card-info">
           <h3>Mukbang Clips</h3>
           <p>Kim & Kurt</p>
@@ -1137,19 +1199,9 @@
       </div>
 
       <div class="video-card">
-        <video controls autoplay muted loop playsinline preload="auto" poster="Me & Kimtots/5-0703.png">
-          <source src="video5.mp4" type="video/mp4">
-        </video>
-        <div class="video-card-info">
-          <h3>Mukbang Clips</h3>
-          <p>Kim & Kurt</p>
+        <div class="video-iframe-wrap">
+          <iframe src="https://www.youtube.com/embed/WqVxSCBOUpw?autoplay=1&mute=1&loop=1&playlist=WqVxSCBOUpw&controls=1&playsinline=1&start=15" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
         </div>
-      </div>
-
-      <div class="video-card">
-        <video controls autoplay muted loop playsinline preload="auto" poster="Me & Kimtots/5-0703.png">
-          <source src="video7.mp4" type="video/mp4">
-        </video>
         <div class="video-card-info">
           <h3>Mukbang Clips</h3>
           <p>Kim & Kurt</p>
@@ -1366,29 +1418,44 @@
     });
   });
 
-  /* ===========================
-     VIDEO MEMORIES
-  =========================== */
-  const videoMemories = [
-    { src: 'video8.mp4', poster: 'Me & Kimtots/2-0703.png', title: 'Kim & Kurt Vlogs', desc: 'Kulitan Vlogs' },
-    { src: 'video9.mp4', poster: 'Me & Kimtots/1-0703.png', title: 'Kim & Kurt Vlogs', desc: 'Tiktok Vlogs' },
-    { src: 'video10.mp4', poster: 'Me & Kimtots/1-0703.png', title: 'Kim & Kurt Vlogs', desc: 'Jack En Poy "Fast Eating"' },
+ /* ===========================
+   VIDEO MEMORIES
+=========================== */
+const videoMemories = [
+  { ytId: '2sI6foYNbkw', title: 'Kim & Kurt Vlogs', desc: 'Kulitan Vlogs' },
+  { ytId: 'RQCxsAa-YHw', title: 'Kim & Kurt Vlogs', desc: 'Tiktok Vlogs', start: 5 },
+  { ytId: 'WqVxSCBOUpw', title: 'Kim & Kurt Vlogs', desc: 'Jack En Poy "Fast Eating"', start: 10 },
+];
 
-  ];
-  const videoGrid = document.getElementById('video-grid-container');
-  if (videoGrid) {
-    videoMemories.forEach(v => {
-      const card = document.createElement('div');
-      card.className = 'video-card';
-      card.innerHTML = `
-        <video controls autoplay muted loop playsinline preload="auto" poster="${v.poster}">
-          <source src="${v.src}" type="video/mp4">
-        </video>
-        <div class="video-card-info"><h3>${v.title}</h3><p>${v.desc}</p></div>`;
-      videoGrid.appendChild(card);
-    });
-  }
-  
+const videoGrid = document.getElementById('video-grid-container');
+
+if (videoGrid) {
+  videoMemories.forEach(v => {
+
+    const startParam = v.start ? `&start=${v.start}` : '';
+
+    const card = document.createElement('div');
+    card.className = 'video-card';
+
+    card.innerHTML = `
+      <div class="video-iframe-wrap">
+        <iframe 
+          src="https://www.youtube.com/embed/${v.ytId}?autoplay=1&mute=1&loop=1&playlist=${v.ytId}&controls=1&playsinline=1${startParam}"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <div class="video-card-info">
+        <h3>${v.title}</h3>
+        <p>${v.desc}</p>
+      </div>
+    `;
+
+    videoGrid.appendChild(card);
+  });
+}
 
   /* ===========================
      YEAR TABS
